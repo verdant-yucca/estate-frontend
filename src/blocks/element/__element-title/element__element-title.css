@@ -1,0 +1,10 @@
+.element__element-title {
+  width: 90%;
+  margin: 24px 0 0 21px;
+  padding: 0;
+  color: cadetblue;
+  font-weight: 700;
+  font-size: 18px;
+  line-height: 22px;
+  overflow: hidden;
+}
