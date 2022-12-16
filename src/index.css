@@ -12,21 +12,32 @@
 /* section header */
 
 @import url(blocks/header/header.css);
-@import url(blocks/header/_auth/header_auth.css);
 @import url(blocks/header/__logo/header__logo.css);
 @import url(blocks/header/__logo-container/header__logo-container.css);
 @import url(blocks/header/__menu/header__menu.css);
 @import url(blocks/header/__info/header__info.css);
 @import url(blocks/header/__nav/header__nav.css);
-@import url(blocks/header/__email/header__email.css);
 @import url(blocks/header/__button/header__button.css);
-@import url(blocks/header/__button/_auth/header__button_auth.css);
-@import url(blocks/header/__button/_gray/header__button_gray.css);
-@import url(blocks/header/__icon/header__icon.css);
 
 /* main content */
 
 @import url(blocks/content/content.css);
+
+/* section slider */
+
+@import url(blocks/slider/__business-card/slider__business-card.css);
+
+/* section banner */
+
+@import url(blocks/banner/banner.css);
+
+/* section filters */
+
+@import url(blocks/filters/filters.css);
+@import url(blocks/dropdown/dropdown.css);
+@import url(blocks/toggle-switches/toggle-switches.css);
+/*@import url(blocks/dropdown/listdown__button/listdown__button.css);*/
+/*@import url(blocks/dropdown/listdown__content/listdown__content.css);*/
 
 /* section profile */
 

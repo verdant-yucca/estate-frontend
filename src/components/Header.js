@@ -5,7 +5,9 @@ function Header() {
   return (
     <header className={`header`}>
       <div className={'header__logo-container'}>
-        <img className={'header__logo'} src={logo} alt="Россия" />
+        <Link to="/">
+          <img className={'header__logo'} src={logo} alt="Россия" />
+        </Link>
       </div>
       <div className={'header__menu'} >
         <p className={'header__info'}>
@@ -13,13 +15,13 @@ function Header() {
         </p>
         <div className={'header__nav'} >
           <Route exact path="/">
-            <Link className={'header__button'} to="apartments">Недвижимость</Link>
+            <Link className={'header__button'} to="estate">Недвижимость</Link>
           </Route>
           <Route path="/">
-            <Link className={`header__button`} to="houses">Услуги</Link>
+            <Link className={`header__button`} to="uslugi">Услуги</Link>
           </Route>
           <Route path="/">
-            <Link className={`header__button`} to="cottages">О компании</Link>
+            <Link className={`header__button`} to="AtCompany">О компании</Link>
           </Route>
         </div>
       </div>

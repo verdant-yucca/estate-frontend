@@ -20,15 +20,15 @@ class Api {
       .then (this._checkResponse);
   };
 
-  addCard(title, price, description, url) {
+  addCard(title, price, address, images ) {
     return fetch(`${this._serverUrl}/estate`, {
       method: 'POST',
       headers: this._headers,
       body: JSON.stringify({
         title: title,
         price: price,
-        description: description,
-        photo: url
+        address: address,
+        images: images
       })
     })
       .then (this._checkResponse);

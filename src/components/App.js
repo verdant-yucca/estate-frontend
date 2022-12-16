@@ -8,6 +8,7 @@ import Footer from './Footer';
 import AddPlacePopup from './AddPlacePopup'
 import ImagePopup from './ImagePopup';
 import PopupWithConfirmation from './PopupWithConfirmation'
+import Estate from "./Estate";
 
 function App() {
   const [isAddPlacePopupOpen, setIsAddPlacePopupOpen] = useState(false);
@@ -68,8 +69,11 @@ function App() {
         <Header/>
         <main className="content">
           <Switch>
-            <ProtectedRoute path="/"
+            <ProtectedRoute exact path="/"
                    component={Main}
+            />
+            <ProtectedRoute path="/estate"
+                   component={Estate}
                    onAddPlace={handleAddPlaceClick}
                    onConfirm={handleConfirmClick}
                    onCardClick={handleCardClick}
