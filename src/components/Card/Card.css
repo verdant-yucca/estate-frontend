@@ -1,0 +1,77 @@
+.element {
+  min-width: 282px;
+  border-radius: 10px;
+  display: flex;
+  flex-direction: column;
+  /*justify-content: center;*/
+  overflow: hidden;
+  background-color: #fff;
+  position: relative;
+}
+
+.element__image {
+  width: 100%;
+  aspect-ratio: 1 / 1;
+  object-fit: cover;
+  cursor: pointer;
+}
+
+.element__image:hover {
+  opacity: 0.85;
+  transition: opacity .4s ease-in;
+}
+
+.element__element-title {
+  width: 90%;
+  margin: 24px 0 0 21px;
+  padding: 0;
+  color: cadetblue;
+  font-weight: 700;
+  font-size: 18px;
+  line-height: 22px;
+  overflow: hidden;
+}
+.element__element-price {
+  width: 90%;
+  margin: 24px 0 27px 21px;
+  padding: 0;
+  font-weight: 900;
+  font-size: 20px;
+  line-height: 24px;
+  overflow: hidden;
+}
+.element__element-description {
+  width: 90%;
+  margin: 10px 0 20px 21px;
+  padding: 0;
+  color: grey;
+  font-weight: 500;
+  font-size: 14px;
+  line-height: 18px;
+  overflow: hidden;
+}
+
+.element__delete {
+  width: 18px;
+  height: 19px;
+  padding: 0;
+  border: none;
+  position: absolute;
+  top: 20px;
+  right: 20px;
+  background-size: 100%;
+  cursor: pointer;
+  background: url(../../images/deleteCards.svg) no-repeat center;
+  opacity: 1;
+  transition: opacity .3s ease-in;
+  visibility: hidden;
+}
+
+.element__delete:hover {
+  opacity: 0.6;
+}
+
+.element__delete_active {
+  visibility: visible;
+}
+

@@ -1,0 +1,43 @@
+import PopupWithForm from '../PopupWithForm/PopupWithForm';
+import { useState } from 'react';
+import './AddPlacePopup.css';
+
+function AddPlacePopup({ isOpen, onPopupClose, onAddPlace, isLoading }) {
+  const [title, setTitle] = useState('');
+  const [price, setPrice] = useState('');
+  const [url, setUrl] = useState('');
+  const [description, setDescription] = useState('');
+  const handleChangeTitle = e => setTitle(e.target.value);
+  const handleChangePrice = e => setPrice(e.target.value);
+  const handleChangeUrl = e => setUrl(e.target.value);
+  const handleChangeDescription = e => setDescription(e.target.value);
+
+  const handleSubmit = e => {
+    e.preventDefault();
+    onAddPlace(title, price, description, url);
+    setTitle('');
+    setPrice('');
+    setUrl('');
+    setDescription('');
+  };
+
+  return (
+    <PopupWithForm title="Новое место" name="form-add-cards" buttonSave="Создать" isOpen={isOpen}
+                   onPopupClose={onPopupClose} onSubmit={handleSubmit} isLoading={isLoading} >
+      <input type="text" value={title} onChange={handleChangeTitle} name="name" id="name-mesto-input"
+             className="popup__input popup__input_profile_name" placeholder="Заголовок" required minLength="2" maxLength="30" />
+      <span className="popup__error name-mesto-input-error"></span>
+      <input type="text" value={price} onChange={handleChangePrice} name="price" id="price-mesto-input"
+             className="popup__input popup__input_profile_name" placeholder="Цена" required minLength="2" maxLength="30" />
+      <span className="popup__error name-mesto-input-error"></span>
+      <input type="text" value={description} onChange={handleChangeDescription} name="description" id="description-input"
+             className="popup__input popup__input_profile_info" placeholder="Описание" required />
+      <span className="popup__error link-input-error"></span>
+      <input type="url" value={url} onChange={handleChangeUrl} name="url" id="link-input"
+             className="popup__input popup__input_profile_info" placeholder="Ссылка на картинку" required />
+      <span className="popup__error link-input-error"></span>
+    </PopupWithForm>
+  );
+}
+
+export default AddPlacePopup;
