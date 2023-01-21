@@ -42,6 +42,27 @@ class Api {
       .then (this._checkResponse);
   };
 
+  telegramMessage(subject, name, phoneNumber, message) {
+    return fetch(`${this._serverUrl}/transfer/sendTlgMessage`, {
+      method: 'POST',
+      headers: this._headers,
+      body: JSON.stringify({
+        subject: subject,
+        name: name,
+        phoneNumber: phoneNumber,
+        message: message
+    })
+    })
+      .then (this._checkResponse);
+  };
+
+  openCard(estateId) {
+    return fetch(`${this._serverUrl}/estate/${estateId}`, {
+      method: 'GET',
+      headers: this._headers
+    })
+      .then (this._checkResponse);
+  };
 }
 
 const api = new Api({

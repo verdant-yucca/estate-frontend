@@ -311,7 +311,7 @@ svg {
 /*//////////////////////////////////////////*/
 
 .elements {
-  margin: 80px 20px 66px;
+  margin: 80px 80px 66px;
   padding: 0;
   display: grid;
   grid-template-columns: repeat(4, minmax(min-content, 1fr));

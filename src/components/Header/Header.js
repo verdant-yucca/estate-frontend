@@ -15,7 +15,7 @@ function Header() {
           Братск +7 (123) 456 78 90 Звоните нам с 9:00 до 19:00
         </p>
         <div className={'header__nav'} >
-          <Route exact path="/">
+          <Route path="/">
             <Link className={'header__button'} to="estate">Недвижимость</Link>
           </Route>
           <Route path="/">

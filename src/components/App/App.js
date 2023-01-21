@@ -9,12 +9,14 @@ import AddPlacePopup from '../AddPlacePopup/AddPlacePopup'
 import ImagePopup from '../ImagePopup/ImagePopup';
 import PopupWithConfirmation from '../PopupWithConfirmation/PopupWithConfirmation'
 import Estate from "../Estate/Estate";
+import { CurrentUserContext } from '../../contexts/CurrentUserContext';
 import './App.css';
 
 function App() {
   const [isAddPlacePopupOpen, setIsAddPlacePopupOpen] = useState(false);
   const [isConfirmPopupOpen, setIsConfirmPopupOpen] = useState(false);
   const [selectedCard, setSelectedCard] = useState(null);
+  const [currentUser, setCurrentUser] = useState({});
   const [cards, setCards] = useState([]);
   const [isLoading, setIsLoading] = useState(false);
   const [selectedCardDelete, setSelectedCardDelete] = useState(null);
@@ -70,7 +72,8 @@ function App() {
 
   return (
     <div className="page">
-        <Header/>
+      <CurrentUserContext.Provider value={currentUser}>
+      <Header/>
         <main className="content">
           <Switch>
             <ProtectedRoute exact path="/"
@@ -106,6 +109,7 @@ function App() {
         />
 
         <ImagePopup card={selectedCard} onPopupClose={closeAllPopups}/>
+      </CurrentUserContext.Provider>
     </div>
   );
 }

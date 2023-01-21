@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="WebServers">
+    <option name="servers">
+      <webServer id="1acadbae-5a7f-4257-963b-2160108de3b2" name="Estate-frontend">
+        <fileTransfer rootFolder="/home/verdant-yucca/dev/estate-agency/estate-frontend" accessType="SFTP" host="verdant-yucca.ru" port="22" sshConfigId="db6327d5-1461-4697-947a-42aa09788d52" sshConfig="verdant-yucca@verdant-yucca.ru:22 key" keyPair="true">
+          <advancedOptions>
+            <advancedOptions dataProtectionLevel="Private" keepAliveTimeout="0" passiveMode="true" shareSSLContext="true" />
+          </advancedOptions>
+        </fileTransfer>
+      </webServer>
+    </option>
+  </component>
+</project>
