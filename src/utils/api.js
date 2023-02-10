@@ -1,4 +1,4 @@
-import { serverUrl} from "./constants";
+import {jwt, serverUrl} from "./constants";
 
 class Api {
   constructor({ serverUrl, headers }) {
@@ -20,16 +20,16 @@ class Api {
       .then (this._checkResponse);
   };
 
-  addCard(title, price, address, images ) {
+  addCard(data) {
     return fetch(`${this._serverUrl}/estate`, {
       method: 'POST',
-      headers: this._headers,
-      body: JSON.stringify({
-        title: title,
-        price: price,
-        address: address,
-        images: images
-      })
+      headers: {
+        "Authorization": jwt,
+        // "Content-Type": 'multipart/form-data',
+        // "Content-Type": 'application/x-www-form-urlencoded',
+
+      },
+      body: data
     })
       .then (this._checkResponse);
   };
@@ -68,7 +68,8 @@ class Api {
 const api = new Api({
   serverUrl: serverUrl,
   headers: {
-    'Content-Type': 'application/json'
+    'Content-Type': 'application/json',
+    "Authorization": jwt
   }
 });
 

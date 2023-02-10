@@ -1,5 +1,5 @@
 import {useState, useEffect} from 'react';
-import {Route, Switch, Redirect} from 'react-router-dom';
+import {Route, Switch, Redirect, useHistory} from 'react-router-dom';
 import ProtectedRoute from "../ProtectedRoute/ProtectedRoute";
 import api from '../../utils/api';
 import Header from '../Header/Header';
@@ -11,6 +11,12 @@ import PopupWithConfirmation from '../PopupWithConfirmation/PopupWithConfirmatio
 import Estate from "../Estate/Estate";
 import { CurrentUserContext } from '../../contexts/CurrentUserContext';
 import './App.css';
+import authApi from "../../utils/authApi";
+import successIcon from '../../images/success.svg';
+import failIcon from '../../images/fail.svg';
+import Register from "../Register/Register";
+import Login from "../Login/Login";
+import InfoTooltip from "../InfoTooltip/InfoTooltip";
 
 function App() {
   const [isAddPlacePopupOpen, setIsAddPlacePopupOpen] = useState(false);
@@ -20,6 +26,15 @@ function App() {
   const [cards, setCards] = useState([]);
   const [isLoading, setIsLoading] = useState(false);
   const [selectedCardDelete, setSelectedCardDelete] = useState(null);
+
+  const [loggedIn, setLoggedIn] = useState(false);
+  const history = useHistory();
+  const [isTooltipPopupOpen, setIsTooltipPopupOpen] = useState(false);
+  const [email, setEmail] = useState('');
+  const [messageTooltip, setMessageTooltip] = useState('');
+  const [iconTooltip, setIconTooltip] = useState('');
+  const [headerStatus, setHeaderStatus] = useState(false);
+
 
   const onError = err => console.log(err);
 
@@ -31,7 +46,67 @@ function App() {
         .catch(err => {
           onError(err)
         });
+    setInterval(checkToken(), 100);
   }, [])
+
+
+  function checkToken() {
+    if (localStorage.getItem('token')) {
+      authApi.check()
+        .then(() => {
+          setLoggedIn(true);
+        })
+        .catch(err => onError(err));
+    }
+    return true
+  }
+
+  const handleSuccessClick = () => setIsTooltipPopupOpen(true);
+
+  const handleRegister = (password, email) => {
+    authApi.register(password, email)
+      .then(res => {
+        if(res) {
+          setIconTooltip(successIcon);
+          setMessageTooltip('Вы успешно зарегистрировались!');
+          handleSuccessClick();
+          // history.push('/sign-in');
+        }
+      })
+      .then(() => setTimeout(handleLogin, 300, password, email))
+      .catch(err => {
+        onError(err);
+        setIconTooltip(failIcon);
+        setMessageTooltip('Что-то пошло не так! Попробуйте еще раз.');
+        handleSuccessClick();
+      });
+  };
+
+  const handleLogin = (password, email) => {
+    authApi.login(password, email)
+      .then(res => {
+        if(res.token) {
+          localStorage.setItem('token', res.token);
+          window.location.reload();
+          history.goBack()
+          setEmail(email);
+          setLoggedIn(true);
+        }
+      })
+      .catch((err) => {
+        onError(err);
+        setIconTooltip(failIcon);
+        setMessageTooltip('Что-то пошло не так! Попробуйте еще раз.');
+        handleSuccessClick();
+        // history.push('/sign-in');
+      });
+  };
+
+  const signOut = () => {
+    localStorage.removeItem('token');
+    setLoggedIn(false);
+    setEmail('');
+  };
 
 
   const handleAddPlaceClick = () => setIsAddPlacePopupOpen(true);
@@ -44,18 +119,15 @@ function App() {
 
   const handleCardDelete = estate => {
     api.deleteCard(estate._id)
-      .then(() => {
-        console.log(123)
-        setCards((state) => state.filter(item => item._id !== cards._id))
-      })
+      .then((res) => setCards((estatesNew) => estatesNew.filter(item => item._id !== estate._id)))
       .catch(err => onError(err))
       .finally(() => closeAllPopups());
   };
 
-  const handleAddPlaceSubmit = (title, price, description, url) => {
+  const handleAddPlaceSubmit = (data) => {
     setIsLoading(true);
-    api.addCard(title, price, description, url)
-      .then((data) => setCards([data, ...cards]))
+    api.addCard(data)
+      .then(({estate}) => setTimeout(()=>{setCards([estate, ...cards])}, 1500))
       .catch(err => onError(err))
       .finally(() => {
         setIsLoading(false);
@@ -73,18 +145,34 @@ function App() {
   return (
     <div className="page">
       <CurrentUserContext.Provider value={currentUser}>
-      <Header/>
-        <main className="content">
+        <Header loggedIn={loggedIn} email={email} signOut={signOut} />
+        <main key={"main"} className="content">
           <Switch>
-            <ProtectedRoute exact path="/"
-                   component={Main}
+            <Route exact path="/">
+              <Main
+                loggedIn={loggedIn}
+              />
+            </Route>
+
+            <Route path="/estate">
+              <Estate onAddPlace={handleAddPlaceClick}
+                      onConfirm={handleConfirmClick}
+                      onCardClick={handleCardClick}
+                      cards={cards}
+                      loggedIn={loggedIn}
+              />
+            </Route>
+            <ProtectedRoute path="/sign-up"
+                            component={Register}
+                            handleRegister={handleRegister}
             />
-            <ProtectedRoute path="/estate"
-                   component={Estate}
-                   onAddPlace={handleAddPlaceClick}
-                   onConfirm={handleConfirmClick}
-                   onCardClick={handleCardClick}
-                   cards={cards}
+            <Route path="/sign-in">
+              <Login handleLogin={handleLogin}/>
+            </Route>
+
+            <ProtectedRoute path="/admin"
+                            component={Main}
+                            loggedIn={loggedIn}
             />
 
             <Route path="*">
@@ -109,6 +197,10 @@ function App() {
         />
 
         <ImagePopup card={selectedCard} onPopupClose={closeAllPopups}/>
+
+        <InfoTooltip isOpen={isTooltipPopupOpen} onPopupClose={closeAllPopups}
+                     messageTooltip={messageTooltip} iconTooltip={iconTooltip}/>
+
       </CurrentUserContext.Provider>
     </div>
   );

@@ -19,9 +19,9 @@ function ContactUsForm() {
   };
 
   return (
-    <div className="main">
+    <section className="main" id='section-contact-us'>
     <div className="container">
-      <div className="content">
+      <div className="contact-us__block">
         <div className="image-box">
           <img src={imgContact} alt=""/>
         </div>
@@ -45,7 +45,7 @@ function ContactUsForm() {
         </form>
       </div>
     </div>
-    </div>
+    </section>
   )
 }
 

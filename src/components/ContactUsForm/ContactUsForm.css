@@ -28,7 +28,7 @@
   margin: 0 20px;
   box-shadow: 0 5px 10px rgba(0, 0, 0, 0.15);
 }
-.container .content{
+.container .contact-us__block{
   width: 100%;
   height: 500px;
   display: flex;
@@ -36,28 +36,28 @@
   align-items: center;
   justify-content: space-between;
 }
-.content .image-box{
+.contact-us__block .image-box{
   max-width: 55%;
 }
-.content .image-box img{
+.contact-us__block .image-box img{
   width: 100%;
 }
-.content .topic{
+.contact-us__block .topic{
   font-size: 22px;
   font-weight: 500;
   color: #ba24c2;
 }
-.content form{
+.contact-us__block form{
   width: 40%;
   margin-right: 30px;
 }
-.content .input-box{
+.contact-us__block .input-box{
   height: 50px;
   width: 100%;
   margin: 16px 0;
   position: relative;
 }
-.content .input-box input{
+.contact-us__block .input-box input{
   position: absolute;
   height: 100%;
   width: 100%;
@@ -69,12 +69,12 @@
   border: 0 solid transparent;
   transition: all 0.3s ease;
 }
-.content .input-box input:focus,
-.content .input-box input:valid{
+.contact-us__block .input-box input:focus,
+.contact-us__block .input-box input:valid{
   border-color: #ba24c2;
   background-color: #fff;
 }
-.content .input-box label{
+.contact-us__block .input-box label{
   position: absolute;
   left: 18px;
   top: 50%;
@@ -84,19 +84,19 @@
   transform: translateY(-50%);
   transition: all 0.3s ease;
 }
-.content .input-box input:focus ~ label,
-.content .input-box input:valid ~ label{
+.contact-us__block .input-box input:focus ~ label,
+.contact-us__block .input-box input:valid ~ label{
   top: 0;
   left: 12px;
   /*display: 14px;*/
   color: #ba24c2;
   background: #fff;
 }
-.content .message-box{
+.contact-us__block .message-box{
   min-height: 100px;
   position: relative;
 }
-.content .message-box textarea{
+.contact-us__block .message-box textarea{
   padding: 0;
   position: absolute;
   height: 100%;
@@ -108,11 +108,11 @@
   outline: none;
   transition: all 0.3s ease;
 }
-.content .message-box textarea:focus{
+.contact-us__block .message-box textarea:focus{
   border-color: #ba24c2;
   background-color: #fff;
 }
-.content .message-box label{
+.contact-us__block .message-box label{
   position: absolute;
   font-size: 16px;
   color: #636c72;
@@ -121,14 +121,14 @@
   pointer-events: none;
   transition: all 0.3s ease;
 }
-.content .message-box textarea:focus ~ label{
+.contact-us__block .message-box textarea:focus ~ label{
   left: 12px;
   top: -10px;
   color: #ba24c2;
   font-size: 14px;
   background: #fff;
 }
-.content .input-box input[type="submit"]{
+.contact-us__block .input-box input[type="submit"]{
   color: #fff;
   background: #ba24c2;
   padding-left: 0;
@@ -138,22 +138,22 @@
   letter-spacing: 1px;
   transition: all 0.3s ease;
 }
-.content .input-box input[type="submit"]:hover{
+.contact-us__block .input-box input[type="submit"]:hover{
   background-color: #d43ddb;
 }
 @media (max-width:1000px) {
-  .content .image-box{
+  .contact-us__block .image-box{
     max-width: 70%;
   }
-  .content{
+  .contact-us__block{
     padding: 10px 0;
   }
 }
 @media (max-width:900px) {
-  .content .image-box{
+  .contact-us__block .image-box{
     display: none;
   }
-  .content form{
+  .contact-us__block form{
     width: 100%;
     margin-left: 30px;
   }
