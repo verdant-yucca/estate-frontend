@@ -4,7 +4,7 @@ import { useState } from 'react';
 // import YMaps from '../VMaps/YMaps'
 
 function Estate({cards, onCardClick, onAddPlace, onConfirm, loggedIn }) {
-
+//TODO: перенести сюда запрос карточек сервера
   return (
     <>
       <section key={"banner_estate"} className='banner'>

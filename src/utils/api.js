@@ -63,6 +63,14 @@ class Api {
     })
       .then (this._checkResponse);
   };
+
+  getReviews() {
+    return fetch(`${this._serverUrl}/review`, {
+      method: 'GET',
+      headers: this._headers
+    })
+      .then (this._checkResponse);
+  };
 }
 
 const api = new Api({

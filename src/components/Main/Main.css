@@ -23,7 +23,7 @@
   height: 100vh;
   margin: 0;
   padding: 0;
-  background-image: url(../../images/slide-one.jpg);
+  /*background-image: url(../../images/slide-one.jpg);*/
   object-fit: cover;
   position: absolute;
   top: 0;

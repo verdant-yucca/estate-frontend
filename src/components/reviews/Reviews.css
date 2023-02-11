@@ -1,0 +1,77 @@
+.swiper {
+  position: relative;
+  width: 90%;
+  height: 300px;
+  margin: 30px auto;
+}
+
+.swiper__section {
+  display: flex;
+  flex-direction: column;
+  margin: 30px auto 60px;
+  padding-bottom: 10px;
+  width: 100%;
+  overflow: hidden;
+  align-items: center;
+}
+
+.swiper-slide {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  position: relative;
+}
+
+/* дополнительные стили для этого примера */
+.slider__item {
+  display: flex;
+  flex-direction: row;
+  width: 100%;
+  height: 70%;
+  box-shadow: 0 0 15px rgba(128, 128, 128, 0.47);
+  border-radius: 10px;
+  /*justify-content: ;*/
+  /*align-items: ;*/
+}
+
+.slider_item_img {
+  width: 30%;
+  border-radius: 50%;
+}
+
+.slider__item_content {
+  display: flex;
+  flex-direction: column;
+  align-items: start;
+}
+
+.slider__item_name {
+  margin: 20px 0 0;
+}
+
+.slider__item_text {
+  text-align: justify;
+  margin-right: 5%;
+}
+
+.swiper__title {
+  font-size: 36px;
+  margin: 50px 0 0 ;
+}
+
+
+.swiper__button {
+  /*text-shadow: 0 0 10px #000;*/
+  /*box-shadow: 0 0 10px #000;*/
+  font-size: 24px;
+  text-decoration: none;
+  color: rgba(255,255,255,1);
+  /*background-color: rgba(6, 26, 94, 0.5);*/
+  background-color: #102770;
+  padding: 5px 15px;
+  /*border: 1px white solid;*/
+  border-radius: 15px;
+  transition: all .2s ease-in;
+  cursor: pointer;
+}
