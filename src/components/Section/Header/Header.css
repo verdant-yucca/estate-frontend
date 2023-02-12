@@ -97,4 +97,10 @@
     padding: 0;
     font-size: 14px;
   }
+
+
+  .header__info {
+    visibility: hidden;
+  }
+
 }

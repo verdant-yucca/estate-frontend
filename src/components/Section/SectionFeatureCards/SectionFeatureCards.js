@@ -19,7 +19,7 @@ function SectionFeatureCards({cards}) {
       <h1 className="swiper__title">Популярные Объекты Недвижимости</h1>
 
       <Swiper
-        slidesPerView={4}
+        slidesPerView={5}
         centeredSlides={false}
         slidesOffsetAfter={10}
         slidesOffsetBefore={10}
@@ -30,10 +30,18 @@ function SectionFeatureCards({cards}) {
           enabled: true,
         }}
         breakpoints={{
-          // 769: {
-          //   slidesPerView: 2,
-          //   slidesPerGroup: 2,
-          // },
+          1500: {
+            slidesPerView: 4,
+          },
+          1100: {
+            slidesPerView: 3,
+          },
+          940: {
+            slidesPerView: 2,
+          },
+          500: {
+            slidesPerView: 1,
+          },
         }}
         navigation={true}
         pagination={{

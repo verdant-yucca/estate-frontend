@@ -23,9 +23,9 @@ function App() {
   const [isConfirmPopupOpen, setIsConfirmPopupOpen] = useState(false);
   const [selectedCard, setSelectedCard] = useState(null);
   const [currentUser, setCurrentUser] = useState({});
-  const [cards, setCards] = useState([]);
   const [isLoading, setIsLoading] = useState(false);
   const [selectedCardDelete, setSelectedCardDelete] = useState(null);
+  const [cards, setCards] = useState([]);
 
   const [loggedIn, setLoggedIn] = useState(false);
   const history = useHistory();
@@ -33,19 +33,18 @@ function App() {
   const [email, setEmail] = useState('');
   const [messageTooltip, setMessageTooltip] = useState('');
   const [iconTooltip, setIconTooltip] = useState('');
-  const [headerStatus, setHeaderStatus] = useState(false);
 
 
   const onError = err => console.log(err);
 
   useEffect(() => {
-      api.getInitialCards()
-        .then((cards) => {
-          setCards(cards);
-        })
-        .catch(err => {
-          onError(err)
-        });
+    api.getInitialCards()
+      .then((cards) => {
+        setCards(cards);
+      })
+      .catch(err => {
+        onError(err)
+      });
     setInterval(checkToken(), 100);
   }, [])
 

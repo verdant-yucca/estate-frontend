@@ -8,26 +8,27 @@
   background-color: #fff;
   position: relative;
   box-shadow: 3px 3px 15px 0 #3d3c3a;
-
 }
 
 .element__title {
-  width: 90%;
-  margin: 24px 0 0 21px;
+  width: 83%;
+  margin: 10px 0 0 21px;
   padding: 0;
   /*color: cadetblue;*/
-  font-weight: 700;
-  font-size: 24px;
+  font-weight: 600;
+  font-size: 16px;
   line-height: 22px;
   overflow: hidden;
+  white-space: nowrap;
+  text-overflow: ellipsis;
 }
 
 .element__price {
   width: 90%;
-  margin: 10px 0 27px 21px;
+  margin: 5px 0 10px 21px;
   padding: 0;
   font-weight: 500;
-  font-size: 18px;
+  font-size: 16px;
   line-height: 24px;
   overflow: hidden;
   color: black;
@@ -76,7 +77,8 @@
 
 .element__image {
   width: 100%;
-  aspect-ratio: 1 / 1;
+  height: 180px;
+  /*aspect-ratio: 16 / 9;*/
   object-fit: cover;
   /*cursor: pointer;*/
 }
@@ -93,6 +95,21 @@
   background-color: #46237a;
 }
 
+.element__tag_green {
+  width: 16%;
+  background-color: #154b17;
+}
+
+.element__tag_blue {
+  width: 35%;
+  background-color: #14194d;
+}
+
+.element__tag_yellow {
+  width: 25.5%;
+  background-color: #8c8033;
+}
+
 .element_image-tag {
   width: 12px;
   height: 12px;
@@ -104,6 +121,10 @@
   color: black;
   margin: 0;
   color: white;
+}
+
+.element__button {
+  height: 30px;
 }
 
 /*.element__image:hover {*/

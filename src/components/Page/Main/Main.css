@@ -35,6 +35,12 @@
   left: 0;
 }
 @media screen and (max-width: 700px) {
+  .promo {
+    padding-top: 30%;
+    flex-direction: column;
+    min-height: 100vh;
+  }
+
   .promo__slider {
     margin: 0;
     width: 100%;
