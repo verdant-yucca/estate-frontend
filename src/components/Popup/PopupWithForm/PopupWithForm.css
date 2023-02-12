@@ -1,0 +1,123 @@
+.popup {
+  width: 100%;
+  height: 100%;
+  display: flex;
+  visibility: hidden;
+  opacity: 0;
+  transition: visibility 0.4s, opacity 0.5s linear;
+  position: fixed;
+  justify-content: center;
+  align-items: center;
+  background-color: rgba(0, 0, 0, 0.5);
+  z-index: 1000;
+}
+
+.popup__edit {
+  align-self: center;
+  display: flex;
+  flex-direction: column;
+  width: 358px;
+  position: relative;
+}
+
+@media screen and (max-width: 680px) {
+  .popup__edit {
+    max-width: 282px;
+  }
+}
+
+.popup__button-save {
+  width: 358px;
+  height: 50px;
+  margin: 48px auto 37px;
+  padding: 0;
+  background-color: #000;
+  border: none;
+  border-radius: 2px;
+  color: #fff;
+  font-weight: normal;
+  font-size: 18px;
+  line-height: 22px;
+  text-align: center;
+  cursor: pointer;
+}
+
+.popup__button-save:hover {
+  opacity: 80%;
+}
+
+@media screen and (max-width: 680px) {
+  .popup__button-save {
+    width: 238px;
+    height: 46px;
+    margin: 45px 22px 25px;
+    font-size: 14px;
+    line-height: 17px;
+  }
+}
+
+
+.popup__button-close {
+  height: 32px;
+  width: 32px;
+  padding: 0;
+  background-image: url(../../../images/button/buttonClose.svg);
+  background-repeat: no-repeat;
+  background-size: cover;
+  background-color: transparent;
+  position: absolute;
+  top: -40px;
+  right: -40px;
+  border: none;
+  cursor: pointer;
+}
+
+.popup__button-close:hover {
+  opacity: 60%;
+}
+
+@media screen and (max-width: 680px) {
+  .popup__button-close {
+    height: 20px;
+    width: 20px;
+    top: -36px;
+    right: 0;
+  }
+}
+
+.popup__container {
+  width: 100%;
+  max-width: 430px;
+  background-color: #fff;
+  border-radius: 10px;
+  display: flex;
+  flex-direction: column;
+  position: relative;
+  box-shadow: 0 0 25px rgba(0,0,0,.15);
+}
+
+@media screen and (max-width: 680px) {
+  .popup__container {
+    max-width: 282px;
+  }
+}
+
+.popup__title {
+  margin: 34px auto 47px 36px;
+  font-weight: 900;
+  font-size: 24px;
+  line-height: 29px;
+}
+
+@media screen and (max-width: 680px) {
+  .popup__title {
+    margin: 25px auto 75px 22px;
+    font-size: 18px;
+    line-height: 22px;
+  }
+}
+
+.popup_active {
+  visibility: visible;
+  opacity: 1;
+}

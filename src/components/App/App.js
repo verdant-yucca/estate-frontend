@@ -2,21 +2,21 @@ import {useState, useEffect} from 'react';
 import {Route, Switch, Redirect, useHistory} from 'react-router-dom';
 import ProtectedRoute from "../ProtectedRoute/ProtectedRoute";
 import api from '../../utils/api';
-import Header from '../Header/Header';
-import Main from '../Main/Main';
-import Footer from '../Footer/Footer';
-import AddPlacePopup from '../AddPlacePopup/AddPlacePopup'
-import ImagePopup from '../ImagePopup/ImagePopup';
-import PopupWithConfirmation from '../PopupWithConfirmation/PopupWithConfirmation'
-import Estate from "../Estate/Estate";
+import Header from '../Section/Header/Header';
+import Main from '../Page/Main/Main';
+import Footer from '../Section/Footer/Footer';
+import AddPlacePopup from '../Popup/AddPlacePopup/AddPlacePopup'
+import ImagePopup from '../Popup/ImagePopup/ImagePopup';
+import PopupWithConfirmation from '../Popup/PopupWithConfirmation/PopupWithConfirmation'
+import Estate from "../Page/Estate/Estate";
 import { CurrentUserContext } from '../../contexts/CurrentUserContext';
 import './App.css';
 import authApi from "../../utils/authApi";
-import successIcon from '../../images/success.svg';
-import failIcon from '../../images/fail.svg';
-import Register from "../Register/Register";
-import Login from "../Login/Login";
-import InfoTooltip from "../InfoTooltip/InfoTooltip";
+import successIcon from '../../images/button/success.svg';
+import failIcon from '../../images/button/fail.svg';
+import Register from "../Page/Register/Register";
+import Login from "../Page/Login/Login";
+import InfoTooltip from "../Popup/InfoTooltip/InfoTooltip";
 
 function App() {
   const [isAddPlacePopupOpen, setIsAddPlacePopupOpen] = useState(false);

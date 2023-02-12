@@ -1,0 +1,144 @@
+.element {
+  width: 100%;
+  border-radius: 10px;
+  display: flex;
+  flex-direction: column;
+  /*justify-content: center;*/
+  overflow: hidden;
+  background-color: #fff;
+  position: relative;
+  box-shadow: 3px 3px 15px 0 #3d3c3a;
+
+}
+
+.element__title {
+  width: 90%;
+  margin: 24px 0 0 21px;
+  padding: 0;
+  /*color: cadetblue;*/
+  font-weight: 700;
+  font-size: 24px;
+  line-height: 22px;
+  overflow: hidden;
+}
+
+.element__price {
+  width: 90%;
+  margin: 10px 0 27px 21px;
+  padding: 0;
+  font-weight: 500;
+  font-size: 18px;
+  line-height: 24px;
+  overflow: hidden;
+  color: black;
+  /*color: grey;*/
+
+}
+
+.element__description {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  margin: 0 21px 5px;
+}
+
+.element__address {
+  width: 90%;
+  padding: 0;
+  margin: 0 0 0 21px;
+  color: grey;
+  font-weight: 500;
+  font-size: 14px;
+  line-height: 18px;
+  overflow: hidden;
+}
+
+.element__element-options {
+  color: grey;
+  font-size: 14px;
+  margin: 0 0 10px 21px;
+}
+
+.element_views {
+  width: 20px;
+  height: 20px;
+}
+
+.element_views_counter {
+  margin: 0;
+  color: grey;
+  font-weight: 500;
+  font-size: 14px;
+  line-height: 18px;
+  overflow: hidden;
+}
+
+
+.element__image {
+  width: 100%;
+  aspect-ratio: 1 / 1;
+  object-fit: cover;
+  /*cursor: pointer;*/
+}
+
+.element__tag {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  padding: 3px;
+  margin: 5px 0 0 21px;
+  border: #46237a solid 1px;
+  border-radius: 10px;
+  width: 15%;
+  background-color: #46237a;
+}
+
+.element_image-tag {
+  width: 12px;
+  height: 12px;
+  margin: 0 10px 0 0;
+}
+
+.element__tag-text {
+  font-size: 12px;
+  color: black;
+  margin: 0;
+  color: white;
+}
+
+/*.element__image:hover {*/
+/*  opacity: 0.85;*/
+/*  transition: opacity .4s ease-in;*/
+/*}*/
+
+
+
+
+
+/*====================== admin ============================*/
+
+
+
+.element__delete {
+  width: 18px;
+  height: 19px;
+  padding: 0;
+  border: none;
+  position: absolute;
+  top: 20px;
+  right: 20px;
+  background-size: 100%;
+  cursor: pointer;
+  background: url(../../../../images/button/deleteCards.svg) no-repeat center;
+  opacity: 1;
+  transition: opacity .3s ease-in;
+  visibility: hidden;
+}
+
+.element__delete:hover {
+  opacity: 0.6;
+}
+
+.element__delete_active {
+  visibility: visible;
+}
