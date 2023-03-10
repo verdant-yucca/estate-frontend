@@ -3,17 +3,14 @@ import eyes from '../../../../images/eyes.png';
 import office from '../../../../images/tagEstate/building.png';
 import home from '../../../../images/tagEstate/building-1.png';
 import apartment from '../../../../images/tagEstate/building-2.png';
+import { Route, Link } from 'react-router-dom';
 import React from "react";
+import {gap} from "../../../../utils/utils";
 
 function Card({ card, onCardClick, onConfirm, loggedIn }) {
   const handleCardClick = () => onCardClick(card);
   const handleConfirmClick = () => onConfirm(card);
-  console.log(card);
-
-  const gap = (n) => {
-    let res = "" + n;
-    return res.replace(/\d{0,3}(?=(\d{3})+$)/g, "$& ") ;
-  }
+  // console.log(card);
 
   const getTypeEstate = (card) => {
     let res = "";
@@ -33,6 +30,11 @@ function Card({ card, onCardClick, onConfirm, loggedIn }) {
   const handlerOnClick = () => {
     console.log('click')
   };
+
+  const toDetails = {
+    pathname: 'estate/' + card._id,
+    estateId: card._id
+  }
   return(
     <li key={card._id+1} className="element">
     <img className="element__image" src={'https://api.verdant-yucca.ru/images/estate/' + card.images[0]} alt={card.title} />
@@ -59,7 +61,10 @@ function Card({ card, onCardClick, onConfirm, loggedIn }) {
     <p key={"options_" + card._id} className="element__element-options">Площадь: 72м2 / Комнат: 3 / Спален: 1</p>
 
     <div key={"description_" + card._id} className="element__description">
-      <button onClick={handlerOnClick} className='swiper__button element__button '>Показать</button>
+      {/*<button onClick={handlerOnClick} className='swiper__button element__button '>Показать</button>*/}
+      <Route path="/">
+        <Link className='swiper__button element__button' to={toDetails}>Показать</Link>
+      </Route>
       <img key={"eyes_" + card._id} className="element_views" src={eyes} alt="глаз"/>
       <p key={"views_" + card._id} className="element_views_counter" >{card.views}</p>
     </div>

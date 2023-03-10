@@ -17,6 +17,7 @@ import failIcon from '../../images/button/fail.svg';
 import Register from "../Page/Register/Register";
 import Login from "../Page/Login/Login";
 import InfoTooltip from "../Popup/InfoTooltip/InfoTooltip";
+import Details from "../Page/Details/Details";
 
 function App() {
   const [isAddPlacePopupOpen, setIsAddPlacePopupOpen] = useState(false);
@@ -153,6 +154,8 @@ function App() {
               />
             </Route>
 
+            <Route path="/estate/:estateID" component={Details}/>
+
             <Route path="/estate">
               <Estate onAddPlace={handleAddPlaceClick}
                       onConfirm={handleConfirmClick}
@@ -161,6 +164,8 @@ function App() {
                       loggedIn={loggedIn}
               />
             </Route>
+
+
             <ProtectedRoute path="/sign-up"
                             component={Register}
                             handleRegister={handleRegister}

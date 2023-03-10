@@ -96,35 +96,38 @@
 }
 
 .element__tag_green {
-  width: 16%;
+  width: 57px;
   background-color: #154b17;
 }
 
 .element__tag_blue {
-  width: 35%;
+  width: 115px;
   background-color: #14194d;
 }
 
 .element__tag_yellow {
-  width: 25.5%;
+  width: 85px;
   background-color: #8c8033;
 }
 
 .element_image-tag {
   width: 12px;
   height: 12px;
-  margin: 0 10px 0 0;
+  margin: 0 10px 0 5px;
 }
 
 .element__tag-text {
   font-size: 12px;
-  color: black;
+  /*color: black;*/
   margin: 0;
   color: white;
 }
 
 .element__button {
-  height: 30px;
+  text-decoration: none;
+  text-align: center;
+  padding-top: 7px ;
+  height: 25px;
 }
 
 /*.element__image:hover {*/

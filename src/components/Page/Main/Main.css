@@ -10,7 +10,7 @@
 }
 
 .promo__shadow {
-  background-color: rgba(70, 35, 122, 0.5);
+  background-color: rgba(70, 35, 122, 0.2);
   /*background-color: rgba(0, 0, 0, 0.3);*/
   z-index: 2;
   width: 100%;

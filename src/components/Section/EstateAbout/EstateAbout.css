@@ -1,0 +1,75 @@
+.estate-about{
+  flex-direction: column;
+  display: flex;
+  width: 85%;
+}
+
+.estate-about__parameters{
+  flex-direction: row;
+  display: flex;
+}
+
+.estate-about__parameter{
+  font-style: normal;
+  font-weight: 500;
+  font-size: 16px;
+  line-height: 30px;
+  color: #504f4f;
+  margin: 0;
+}
+
+.estate-about__text{
+  font-weight: 600;
+  font-size: 17px;
+  color: #000000;
+}
+
+.estate-about__list{
+  list-style: none;
+  padding: 0;
+  margin: 0;
+}
+
+.estate-about__list:last-child{
+  margin-left: 10%;
+}
+
+.estate-about__title{
+  margin: 0 0 20px ;
+}
+.estate-info__map{
+  border: 1px solid black;
+  margin-top: 30px;
+  width: 70%;
+  align-self: center;
+}
+
+.estate-about__column{
+  width: 100%;
+  align-self: flex-start;
+}
+
+@media screen and (max-width: 1000px) {
+  .estate-about__parameter{
+    font-weight: 400;
+    font-size: 12px;
+    line-height: 24px;
+  }
+
+  .estate-about__text{
+    font-weight: 500;
+    font-size: 12px;
+    line-height: 24px;
+    color: #000000;
+  }
+}
+
+@media screen and (max-width: 700px) {
+  .estate-about__parameters{
+    flex-direction: column;
+  }
+  .estate-about__list:last-child{
+    margin-left: 0;
+  }
+}
+

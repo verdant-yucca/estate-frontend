@@ -1,0 +1,26 @@
+.estate-info{
+  flex-direction: column;
+  display: flex;
+  width: 85%;
+  margin-top: 40px;
+}
+
+.estate-info__column{
+  display: flex;
+  flex-direction: column;
+  width: 75%;
+}
+
+.estate-info__text{
+  font-style: normal;
+  line-height: 24px;
+  margin: 0;
+  font-weight: 400;
+  font-size: 17px;
+  color: #000000;
+}
+
+.estate-info__title{
+margin: 0 0 20px ;
+}
+
