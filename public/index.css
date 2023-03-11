@@ -1,5 +1,8 @@
 @import url(../src/vendor/normalize.css);
 @import url(../src/vendor/fonts/Inter/inter.css);
+html {
+  margin: 0;
+}
 
 body {
   margin: 0;

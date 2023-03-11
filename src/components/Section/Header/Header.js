@@ -1,6 +1,7 @@
 import logo from '../../../images/logo/logo_white.png';
 import { Route, Link } from 'react-router-dom';
 import './Header.css';
+import HamburgerMenu from "../HamburgerMenu/HamburgerMenu";
 
 function Header({loggedIn, signOut}) {
   return (
@@ -17,18 +18,12 @@ function Header({loggedIn, signOut}) {
           {loggedIn ? <p className="header__admin-info" onClick={signOut} >ㅤㅤExit</p> : ''}
         </div>
         <div className={'header__nav'} >
-          <Route path="/">
-            <Link className={'header__button'} to="estate">Недвижимость</Link>
-          </Route>
-          <Route path="/">
-            <Link className={`header__button`} to="uslugi">Услуги</Link>
-          </Route>
-          <Route path="/">
-            <Link className={`header__button`} to="AtCompany">О компании</Link>
-          </Route>
+          <Link className={'header__button'} to="/estate">Недвижимость</Link>
+          <Link className={`header__button`} to="/uslugi">Услуги</Link>
+          <Link className={`header__button`} to="/AtCompany">О компании</Link>
         </div>
       </div>
-      {/*<HamburgerMenu/>*/}
+      <HamburgerMenu loggedIn={loggedIn} signOut={signOut}/>
     </header>
   );
 }

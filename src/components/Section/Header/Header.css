@@ -104,7 +104,8 @@
 @media screen and (max-width: 700px) {
   .header__logo-container {
     margin: 0 0 0 20px;
-    width: 40%;
+    width: 30%;
+    max-width: 150px;
   }
   .header__logo {
     width: 100%;
