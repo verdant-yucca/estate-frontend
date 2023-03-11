@@ -1,8 +1,13 @@
 import './EstateAbout.css';
+import PhotoSlider from "../Blocks/PhotoSlider/PhotoSlider";
 
 function ApartmentAbout({estate}) {
   return (
     <section className="estate-about">
+      <div className="estate-about__column">
+        <PhotoSlider images={estate? estate.images : ""}/>
+      </div>
+
       <div className="estate-about__column">
         <h2 className="estate-about__title">О квартире</h2>
         <div className="estate-about__parameters">

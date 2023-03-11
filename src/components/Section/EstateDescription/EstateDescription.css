@@ -1,11 +1,7 @@
 .estate-description{
-  position: relative;
-  display: flex;
-  flex-direction: row;
+  /*position: relative;*/
   width: 85%;
   margin: 150px auto 30px;
-  /*border: 1px solid red;*/
-  justify-content: space-between;
 }
 
 .estate-description__favorite{
@@ -16,8 +12,8 @@
 }
 
 .estate-description__sidebar{
-  position: fixed;
-  top: 140px;
+  /*position: fixed;*/
+  /*top: 140px;*/
   right: 7.5%;
   /*right: 20px;*/
   width: 20%;
@@ -73,3 +69,28 @@
 .estate-description__button:hover {
   background-color: rgb(107, 65, 168);
 }
+
+.estate-description__back-button{
+  position: absolute;
+  top: 180px;
+  left: 50px;
+  width: 20px;
+  height: 20px;
+  border: none;
+  background: transparent;
+  border-top: 2px solid #000 !important;
+  border-right: 2px solid #000 !important;
+  transform: rotate(-135deg);
+}
+
+.estate-description__block_fixed {
+  position: absolute;
+  top: 100px;
+}
+.estate-description__block {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  width: 100%;
+}
+
