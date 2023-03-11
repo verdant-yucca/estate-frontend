@@ -62,26 +62,7 @@
   font-size: 40px;
   margin: 50px 0 0 ;
   color: #46237a;
-
 }
-
-
-/*.swiper__button {*/
-/*  !*text-shadow: 0 0 10px #fff;*!*/
-/*  box-shadow: 0 0 10px #fff;*/
-/*  font-size: 24px;*/
-/*  text-decoration: none;*/
-/*  color: rgba(255,255,255,1);*/
-/*  !*background-color: rgba(6, 26, 94, 0.5);*!*/
-/*  background-color: #46237a;*/
-/*  padding: 5px 15px;*/
-/*  !*border: 1px white solid;*!*/
-/*  border-radius: 15px;*/
-/*  transition: all .2s ease-in;*/
-/*  cursor: pointer;*/
-/*}*/
-
-
 .swiper__button {
   height: 50px;
   width: 60%;
@@ -102,3 +83,9 @@
   background-color: rgb(107, 65, 168);
 }
 
+@media screen and (max-width: 680px) {
+  .swiper__title {
+    font-size: 26px;
+    text-align: center;
+  }
+}

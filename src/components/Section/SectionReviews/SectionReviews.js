@@ -24,6 +24,7 @@ function SectionReviews({reviews}) {
 
       <Swiper
         slidesPerView={3}
+        loop={true}
         centeredSlides={false}
         slidesOffsetAfter={10}
         slidesOffsetBefore={10}
@@ -34,10 +35,18 @@ function SectionReviews({reviews}) {
           enabled: true,
         }}
         breakpoints={{
-          // 769: {
-          //   slidesPerView: 2,
-          //   slidesPerGroup: 2,
-          // },
+          1500: {
+            slidesPerView: 4,
+          },
+          1100: {
+            slidesPerView: 3,
+          },
+          800: {
+            slidesPerView: 2,
+          },
+          300: {
+            slidesPerView: 1,
+          },
         }}
         // scrollbar={true}
         navigation={true}

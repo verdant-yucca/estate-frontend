@@ -59,7 +59,7 @@
   font-size: 15px;
   pointer-events: none;
   transform: translateY(-50%);
-  transition: all 0.3s ease;
+  transition: all 0.4s ease;
 }
 .contact-us__block .input-box input:focus ~ label,
 .contact-us__block .input-box input:valid ~ label{
@@ -75,6 +75,7 @@
 }
 .contact-us__block .message-box textarea{
   padding: 0;
+  padding-top: 15px;
   position: absolute;
   height: 100%;
   width: 100%;
@@ -83,7 +84,7 @@
   border: 0 solid transparent;
   border-radius: 6px;
   outline: none;
-  transition: all 0.3s ease;
+  transition: all 0.4s ease;
 }
 .contact-us__block .message-box textarea:focus{
   border-color: #46237a;
@@ -98,14 +99,26 @@
   pointer-events: none;
   transition: all 0.3s ease;
 }
+.contact-us__block .message-box label{
+  position: absolute;
+  left: 18px;
+  top: 50%;
+  color: #636c72;
+  font-size: 15px;
+  pointer-events: none;
+  transform: translateY(-50%);
+  transition: all 0.4s ease;
+}
 .contact-us__block .message-box textarea:focus ~ label{
   left: 12px;
-  top: -10px;
+  /*top: -10px;*/
+  top: 0;
   color: #46237a;
   font-size: 14px;
   background: #fff;
 }
 .contact-us__block .input-box input[type="submit"]{
+  margin-top: 20px;
   color: #fff;
   background: #46237a;
   padding-left: 0;
@@ -119,19 +132,33 @@
   background-color: rgb(107, 65, 168);
 }
 @media (max-width:1000px) {
-  .contact-us__block .image-box{
-    max-width: 70%;
-  }
+
   .contact-us__block{
     padding: 10px 0;
   }
 }
 @media (max-width:900px) {
-  .contact-us__block .image-box{
-    display: none;
-  }
+
   .contact-us__block form{
     width: 100%;
     margin-left: 30px;
+  }
+}
+@media (max-width:700px) {
+  .container {
+    width: 90%;
+  }
+  .container .contact-us__block{
+    height: 350px;
+  }
+  .contact-us__block .message-box{
+    min-height: 60px;
+    position: relative;
+  }
+  .contact-us__block .input-box input{
+    width: 90%;
+  }
+  .contact-us__block .message-box textarea{
+    width: 90%;
   }
 }

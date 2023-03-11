@@ -36,10 +36,10 @@ function SectionFeatureCards({cards}) {
           1100: {
             slidesPerView: 3,
           },
-          940: {
+          800: {
             slidesPerView: 2,
           },
-          500: {
+          300: {
             slidesPerView: 1,
           },
         }}
@@ -51,8 +51,8 @@ function SectionFeatureCards({cards}) {
         className="future-card__swiper"
       >
         {cards.map(card => (
-          <SwiperSlide key={'swiper_'+card._id}>
-            <Card key={card._id} loggedIn={false} card={card} onCardClick={false} onConfirm={false} />
+          <SwiperSlide className="future-card__slide" key={'swiper_'+card._id}>
+            <Card key={card._id} loggedIn={false} card={card} onConfirm={false} />
           </SwiperSlide>
         ))}
       </Swiper>

@@ -11,6 +11,7 @@ function PhotoSlider({images})
     <div className="photo-slider">
       <Swiper
         slidesPerView={1}
+        loop={true}
         centeredSlides={true}
         slidesOffsetAfter={0}
         slidesOffsetBefore={0}

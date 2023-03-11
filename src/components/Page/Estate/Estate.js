@@ -26,7 +26,7 @@ function Estate({cards, onCardClick, onAddPlace, onConfirm, loggedIn }) {
       {/*<section>*/}
         <ul key={"all_elements_estates"} className="elements">
           {cards.map(card => (
-            <Card key={card._id} loggedIn={loggedIn} card={card} onCardClick={onCardClick} onConfirm={onConfirm} />
+            <Card key={card._id} loggedIn={loggedIn} card={card} onConfirm={onConfirm} />
           ))}
         </ul>
       {/*</section>*/}

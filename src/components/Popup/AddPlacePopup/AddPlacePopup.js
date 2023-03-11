@@ -21,22 +21,19 @@ function AddPlacePopup({ isOpen, onPopupClose, onAddPlace, isLoading }) {
     data.append('address', address);
 
     let fileList = fileRef.current;
-    // data.append('images', Array.from(fileList));
     const arrFiles = Array.from(fileList);
     let i=0;
     arrFiles.forEach(file => {
       i++;
       data.append('images'+i, file);
     })
-    // console.log(fileRef)
-    // let blobImages = new Blob([fileRef.current], { type: "image/png"})
-    // data.append('images', [fileRef.current]);
-    // console.log(blobImages)
     onAddPlace(data);
-    // setTitle('');
-    // setPrice('');
-    // fileRef.current = null;
-    // setAddress('');
+
+    //после сабмита надо обнулить поля
+    setTitle('');
+    setPrice('');
+    fileRef.current = null;
+    setAddress('');
   };
 
   return (

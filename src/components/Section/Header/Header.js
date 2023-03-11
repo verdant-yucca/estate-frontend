@@ -2,7 +2,7 @@ import logo from '../../../images/logo/logo_white.png';
 import { Route, Link } from 'react-router-dom';
 import './Header.css';
 
-function Header({email, loggedIn, signOut}) {
+function Header({loggedIn, signOut}) {
   return (
     <header className={`header`}>
       <div className={'header__logo-container'}>
@@ -28,6 +28,7 @@ function Header({email, loggedIn, signOut}) {
           </Route>
         </div>
       </div>
+      {/*<HamburgerMenu/>*/}
     </header>
   );
 }

@@ -19,19 +19,19 @@ function Services() {
           <img src={building1} alt="building1" className='services__img'/>
           <h2 className='services__info-title'>Квартиры</h2>
           <p className='services__info-text'>Получите бесплатную консультацию ЭКСПЕРТА по недвижимости + помощь в приобретении</p>
-          <button type='button' className="services__button">Go to Estate</button>
+          <button type='button' className="services__button">Показать квартиры</button>
         </div>
         <div className='services__info'>
           <img src={building2} alt="building2" className='services__img'/>
           <h2 className='services__info-title'>Дома</h2>
           <p className='services__info-text'>Получите бесплатную консультацию ЭКСПЕРТА по недвижимости + помощь в приобретении</p>
-          <button type='button' className="services__button">Go to Estate</button>
+          <button type='button' className="services__button">Показать дома</button>
         </div>
         <div className='services__info'>
           <img src={building3} alt="building3" className='services__img'/>
           <h2 className='services__info-title'>Офисы</h2>
           <p className='services__info-text'>Получите бесплатную консультацию ЭКСПЕРТА по недвижимости + помощь в приобретении</p>
-          <button type='button' className="services__button">Go to Estate</button>
+          <button type='button' className="services__button">Показать офисы</button>
         </div>
 
       </div>
