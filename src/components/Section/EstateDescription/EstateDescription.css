@@ -83,14 +83,24 @@
   transform: rotate(-135deg);
 }
 
+.estate-description__back-button_fixed{
+  position: static;
+  margin-left: 20px;
+}
+
 .estate-description__block_fixed {
-  position: absolute;
-  top: 100px;
+  position: fixed;
+  top: 0;
+  left: 0;
+  z-index: 100;
+  background-color: white;
+  align-content: center;
+  align-items: center;
 }
 .estate-description__block {
   display: flex;
   flex-direction: row;
   justify-content: space-between;
-  width: 100%;
+  width: 90%;
 }
 
