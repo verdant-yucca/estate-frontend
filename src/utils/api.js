@@ -13,8 +13,8 @@ class Api {
       return Promise.reject(res.status);
     };
 
-  getInitialCards() {
-    return fetch(`${this._serverUrl}/estate`, {
+  getInitialCards(page) {
+    return fetch(`${this._serverUrl}/estate?page=${page}`, {
       headers: this._headers
     })
       .then (this._checkResponse);

@@ -20,6 +20,7 @@ function SectionFeatureCards({cards}) {
 
       <Swiper
         slidesPerView={5}
+        loop={true}
         centeredSlides={false}
         slidesOffsetAfter={10}
         slidesOffsetBefore={10}

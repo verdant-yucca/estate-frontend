@@ -18,9 +18,11 @@ import Register from "../Page/Register/Register";
 import Login from "../Page/Login/Login";
 import InfoTooltip from "../Popup/InfoTooltip/InfoTooltip";
 import Details from "../Page/Details/Details";
+import AddEstatePopup from "../Popup/AddEstatePopup/AddEstatePopup";
 
 function App() {
   const [isAddPlacePopupOpen, setIsAddPlacePopupOpen] = useState(false);
+  const [isAddPlacePopupOpen2, setIsAddPlacePopupOpen2] = useState(false);
   const [isConfirmPopupOpen, setIsConfirmPopupOpen] = useState(false);
   const [selectedCard, setSelectedCard] = useState(null);
   const [currentUser, setCurrentUser] = useState({});
@@ -39,7 +41,7 @@ function App() {
   const onError = err => console.log(err);
 
   useEffect(() => {
-    api.getInitialCards()
+    api.getInitialCards(0)
       .then((cards) => {
         setCards(cards);
       })
@@ -110,6 +112,7 @@ function App() {
 
 
   const handleAddPlaceClick = () => setIsAddPlacePopupOpen(true);
+  const handleAddPlaceClick2 = () => setIsAddPlacePopupOpen2(true);
   const handleCardClick = card => setSelectedCard(card);
 
   const handleConfirmClick = card => {
@@ -137,10 +140,20 @@ function App() {
 
   const closeAllPopups = () => {
     setIsAddPlacePopupOpen(false);
+    setIsAddPlacePopupOpen2(false);
     setIsConfirmPopupOpen(false);
     setSelectedCard(null);
     setSelectedCardDelete(null);
   };
+
+  const handleMoreEstates = () => {
+    api.getInitialCards(Math.trunc(cards.length / 20))
+      .then((estate) => {
+        let newArr = cards.concat(estate);
+        setTimeout(()=>{setCards(newArr)}, 300)
+      } )
+      .catch(err => onError(err))
+  }
 
   return (
     <div className="page">
@@ -158,9 +171,11 @@ function App() {
 
             <Route path="/estate">
               <Estate onAddPlace={handleAddPlaceClick}
+                      onAddPlace2={handleAddPlaceClick2}
                       onConfirm={handleConfirmClick}
                       onCardClick={handleCardClick}
                       cards={cards}
+                      onMore={handleMoreEstates}
                       loggedIn={loggedIn}
               />
             </Route>
@@ -189,6 +204,12 @@ function App() {
         <Footer/>
 
         <AddPlacePopup  isOpen={isAddPlacePopupOpen}
+                        onPopupClose={closeAllPopups}
+                        onAddPlace={handleAddPlaceSubmit}
+                        isLoading={isLoading}
+        />
+
+        <AddEstatePopup  isOpen={isAddPlacePopupOpen2}
                         onPopupClose={closeAllPopups}
                         onAddPlace={handleAddPlaceSubmit}
                         isLoading={isLoading}

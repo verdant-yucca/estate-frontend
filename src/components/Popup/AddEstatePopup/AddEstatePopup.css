@@ -1,38 +1,160 @@
-.popup__input {
+.add-estate-popup {
+  width: 100%;
+  height: 100%;
+  display: flex;
+  visibility: hidden;
+  opacity: 0;
+  /*visibility: visible;*/
+  /*opacity: 1;*/
+  transition: visibility 0.4s, opacity 0.5s linear;
+  position: fixed;
+  justify-content: center;
+  align-items: center;
+  background-color: rgba(0, 0, 0, 0.5);
+  z-index: 1000;
+}
+
+.add-estate-popup_active {
+  visibility: visible;
+  opacity: 1;
+}
+
+.add-estate-popup__button-save {
   width: 358px;
-  margin-bottom: 25px;
-  padding-bottom: 13px;
+  height: 50px;
+  margin: 48px auto 37px;
+  padding: 0;
+  background-color: #000;
   border: none;
-  border-bottom: 1px solid rgb(0, 0, 0, 0.2);
+  border-radius: 2px;
+  color: #fff;
+  font-weight: normal;
+  font-size: 18px;
+  line-height: 22px;
+  text-align: center;
+  cursor: pointer;
+}
+
+.add-estate-popup__button-save:hover {
+  opacity: 80%;
+}
+
+.add-estate-popup__button-close {
+  height: 32px;
+  width: 32px;
+  padding: 0;
+  background-image: url(../../../images/button/buttonClose.svg);
+  background-repeat: no-repeat;
+  background-size: cover;
+  /*background-color: transparent;*/
+  background-color: black;
+  position: absolute;
+  top: 50px;
+  right: 50px;
+  border: none;
+  cursor: pointer;
+}
+
+.add-estate-popup__button-close:hover {
+  opacity: 60%;
+}
+
+.add-estate-popup__container {
+  width: 90%;
+  height: 85vh;
+  padding: 40px;
+  /*max-width: 430px;*/
+  background-color: #fff;
+  border-radius: 10px;
+  display: flex;
+  flex-direction: column;
+  box-shadow: 0 0 25px rgba(0,0,0,.15);
+}
+
+.add-estate-popup__title {
+  margin: 0 0 40px;
+  font-weight: 900;
+  font-size: 24px;
+  line-height: 29px;
+}
+.add-estate-popup__edit {
+}
+
+.add-estate-popup__input {
+  /*position: absolute;*/
+  width: 358px;
+  height: 30px;
+  /*margin-bottom: 20px;*/
+  /*padding-bottom: 13px;*/
+  /*border: none;*/
+  /*border-bottom: 1px solid rgb(0, 0, 0, 0.2);*/
+  border-radius: 1%;
+  border: 1px solid rgb(0, 0, 0, 0.2);
   font-weight: normal;
   font-size: 14px;
   line-height: 17px;
+  transition: all 0.3s ease;
+
 }
 
-.popup__input:last-of-type {
-  margin-bottom: 0;
+
+.add-estate-popup__block-input {
+  margin-bottom: 20px;
+  position: relative;
+  /*position:inherit;*/
 }
 
-@media screen and (max-width: 680px) {
-  .popup__input {
-    width: 238px;
-    margin-left: 22px;
-  }
+.add-estate-popup__input:focus,
+.add-estate-popup__input:valid{
+  border-color: #46237a;
+  background-color: #fff;
+}
+.add-estate-popup__input:focus ~ .add-estate-popup__label,
+.add-estate-popup__input:valid ~ .add-estate-popup__label{
+  top: 0;
+  left: 12px;
+  /*display: 14px;*/
+  color: #46237a;
+  background: #fff;
+}
+.add-estate-popup__label {
+  position: absolute;
+  left: 18px;
+  top: 50%;
+  color: #636c72;
+  font-size: 15px;
+  pointer-events: none;
+  transform: translateY(-50%);
+  transition: all 0.4s ease;
 }
 
-.popup__input_profile_name {
+.add-estate-popup__block-title{
+  display: flex;
+  flex-direction: column;
+  margin-right: 40px;
+}
+
+.add-estate-popup__block-photo{
   margin-bottom: 30px;
 }
 
-.popup__error {
-  color: #ff0000;
-  font-size: 12px;
-  line-height: 1.2;
-  margin: 0;
-  padding: 0;
-  position: absolute;
-  z-index: 1;
-  top: 33px;
-  visibility: hidden;
+.add-estate-popup__textarea {
+  width: 100%;
+  height: 60px;
 }
 
+.add-estate-popup__block-properties{
+  margin-bottom: 30px;
+  top: 160px;
+  display: flex;
+  flex-direction: row;
+}
+
+.add-estate-popup__block-properties_column{
+  margin-right: 40px;
+  display: flex;
+  flex-direction: column;
+}
+
+.add-estate-popup__block-info{
+}

@@ -16,7 +16,7 @@ function Main() {
     api.getReviews()
       .then((reviews) => setReviews(reviews))
       .catch(err => console.log(err));
-    api.getInitialCards()
+    api.getInitialCards(0)
       .then((cards) => setCards(cards))
       .catch(err => console.log(err));
   }, [])
