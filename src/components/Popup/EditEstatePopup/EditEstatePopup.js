@@ -1,7 +1,7 @@
 import React, { useState, useRef } from 'react';
 import './EditEstatePopup.css';
 
-function EditEstatePopup({ isOpen, onClickClosePopups, onSubmitEditEstate, estateID, isLoading }) {
+function EditEstatePopup({ isOpenPopup, onClickClosePopups, onSubmitEditEstate, estateID, isLoading }) {
   const [title, setTitle] = useState('');
   const [price, setPrice] = useState('');
   const [rooms, setRooms] = useState('');
@@ -75,7 +75,7 @@ function EditEstatePopup({ isOpen, onClickClosePopups, onSubmitEditEstate, estat
   };
 
   return (
-    <div className={`add-estate-popup ${isOpen ? 'add-estate-popup_active': ''}`}>
+    <div className={`add-estate-popup ${isOpenPopup ? 'add-estate-popup_active': ''}`}>
     {/*<div className={`add-estate-popup popup_active`}>*/}
       <div className="add-estate-popup__container">
         <h2 className="add-estate-popup__title">Объект недвижимости</h2>

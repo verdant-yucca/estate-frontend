@@ -60,6 +60,7 @@ function App() {
     setIsAddEstatePopupOpen(false);
     setIsEditEstatePopupOpen(false);
     setIsDeleteEstatePopupOpen(false);
+    setIsAddReviewPopupOpen(false);
     setSelectedEstateID(null);
   };
 
@@ -155,28 +156,6 @@ function App() {
   };
 //#endregion
 
-//#region AddReview
-  const handleAddReviewSubmit = (name, text) => {
-    setIsLoading(true);
-    api.addReview(name, text)
-      .then((review) => {setReviews([review, ...reviews])})
-      .catch(err => onError(err))
-      .finally(() => {
-        setIsLoading(false);
-        closeAllPopups();
-      });
-  };
-
-  const closeAllPopups = () => {
-    setIsAddPlacePopupOpen(false);
-    setIsAddPlacePopupOpen2(false);
-    setIsConfirmPopupOpen(false);
-    setIsAddReviewPopupOpen(false);
-    setSelectedCard(null);
-    setSelectedCardDelete(null);
-  };
-//#endregion
-
 //#region DeleteEstate
   const handleClickDeleteEstate = estateID => {
     setSelectedEstateID(estateID);
@@ -203,6 +182,20 @@ function App() {
   }
 //#endregion
 
+//#region AddReview
+  const handleClickAddReview = () => setIsAddReviewPopupOpen(true);
+  const handleSubmitAddReview = (name, text) => {
+    setIsLoading(true);
+    api.addReview(name, text)
+      .then((review) => {setReviews([review, ...reviews])})
+      .catch(err => onError(err))
+      .finally(() => {
+        setIsLoading(false);
+        handleClosePopups();
+      });
+  };
+//#endregion
+
   return (
     <div className="page">
       <CurrentUserContext.Provider value={currentUser}>
@@ -211,7 +204,7 @@ function App() {
           <Switch>
             <Route exact path="/">
               <Main
-                onAddReview={handleAddReviewClick}
+                onAddReview={handleClickAddReview}
                 loggedIn={loggedIn}
                 reviews={reviews}
               />
@@ -258,20 +251,20 @@ function App() {
                           isLoading={isLoading}
         />
 
-        <EditEstatePopup  isOpen={isEditEstatePopupOpen}
+        <EditEstatePopup  isOpenPopup={isEditEstatePopupOpen}
                           onClickClosePopups={handleClosePopups}
                           estateID={selectedEstateID}
                           onSubmitEditEstate={handleSubmitEditEstate}
                           isLoading={isLoading}
         />
 
-        <AddReviewPopup  isOpen={isAddReviewPopupOpen}
-                         onPopupClose={closeAllPopups}
-                         onAddReview={handleAddReviewSubmit}
+        <AddReviewPopup  isOpenPopup={isAddReviewPopupOpen}
+                         onClickClosePopups={handleClosePopups}
+                         onSubmitAddReview={handleSubmitAddReview}
                          isLoading={isLoading}
         />
 
-        <DeleteEstatePopup isOpen={isDeleteEstatePopupOpen}
+        <DeleteEstatePopup isOpenPopup={isDeleteEstatePopupOpen}
                            onClickClosePopups={handleClosePopups}
                            estateID={selectedEstateID}
                            onSubmitDeleteEstate={handleSubmitEstateDelete}
@@ -279,7 +272,7 @@ function App() {
 
         <ImagePopup card={selectedEstateID} onPopupClose={handleClosePopups}/>
 
-        <InfoTooltip isOpen={isTooltipPopupOpen} onPopupClose={handleClosePopups}
+        <InfoTooltip isOpenPopup={isTooltipPopupOpen} onPopupClose={handleClosePopups}
                      messageTooltip={messageTooltip} iconTooltip={iconTooltip}/>
 
       </CurrentUserContext.Provider>

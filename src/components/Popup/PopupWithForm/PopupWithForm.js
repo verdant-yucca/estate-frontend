@@ -1,9 +1,9 @@
 import React from 'react';
 import './PopupWithForm.css';
 
-function PopupWithForm({isOpen, onPopupClose, name, title, buttonSave, isLoading, onSubmit, children}) {
+function PopupWithForm({isOpenPopup, onPopupClose, name, title, buttonSave, isLoading, onSubmit, children}) {
   return (
-    <div className={`popup popup_type_${name} ${isOpen ? 'popup_active': ''}`}>
+    <div className={`popup popup_type_${name} ${isOpenPopup ? 'popup_active': ''}`}>
       <div className="popup__container">
         <h2 className="popup__title">{title}</h2>
         <form name={`${name}`} className="popup__edit" noValidate onSubmit={onSubmit}>

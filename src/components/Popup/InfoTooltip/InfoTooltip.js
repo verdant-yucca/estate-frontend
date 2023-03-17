@@ -1,7 +1,7 @@
-function InfoTooltip({ isOpen, onPopupClose, messageTooltip, iconTooltip }) {
+function InfoTooltip({ isOpenPopup, onPopupClose, messageTooltip, iconTooltip }) {
 
   return (
-    <div className={`popup ${isOpen ? 'popup_active': ''}`}>
+    <div className={`popup ${isOpenPopup ? 'popup_active': ''}`}>
       <div className="popup__container">
         <img className="popup__icon-tooltip" src={iconTooltip} />
         <h3 className="popup__title popup__title_type_tooltip">{messageTooltip}</h3>

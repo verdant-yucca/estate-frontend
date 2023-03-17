@@ -1,7 +1,7 @@
 import React, { useState } from 'react';
 import './AddReviewPopup.css';
 
-function AddReviewPopup({ isOpen, onPopupClose, onAddReview, isLoading }) {
+function AddReviewPopup({ isOpenPopup, onClickClosePopups, Submit, isLoading }) {
 
 
   //////////////////
@@ -14,7 +14,7 @@ function AddReviewPopup({ isOpen, onPopupClose, onAddReview, isLoading }) {
   const handleSubmit = e => {
     e.preventDefault();
 
-    onAddReview(name, text);
+    Submit(name, text);
 
     // после сабмита надо обнулить поля
     setName('');
@@ -22,7 +22,7 @@ function AddReviewPopup({ isOpen, onPopupClose, onAddReview, isLoading }) {
   };
 
   return (
-    <div className={`add-review-popup ${isOpen ? 'add-review-popup_active': ''}`}>
+    <div className={`add-review-popup ${isOpenPopup ? 'add-review-popup_active': ''}`}>
     {/*<div className={`add-review-popup popup_active`}>*/}
       <div className="add-review-popup__container">
         <h2 className="add-review-popup__title">Добавить отзыв</h2>
@@ -40,7 +40,7 @@ function AddReviewPopup({ isOpen, onPopupClose, onAddReview, isLoading }) {
 
           <button type="submit" onClick={handleSubmit} className="popup__button-save" >{!isLoading ? "Добавить" : 'Добавление...'}</button>
         </form>
-        <button type="button" className="add-review-popup__button-close" onClick={onPopupClose}></button>
+        <button type="button" className="add-review-popup__button-close" onClick={onClickClosePopups}></button>
       </div>
     </div>
   );
