@@ -1,5 +1,5 @@
 import PopupWithForm from '../PopupWithForm/PopupWithForm';
-import './PopupWithConfirmation.css';
+import './DeleteEstatePopup.css';
 
 function DeleteEstatePopup({ isOpenPopup, onClickClosePopups, estateID, onSubmitDeleteEstate }) {
   const handleSubmit = e => {

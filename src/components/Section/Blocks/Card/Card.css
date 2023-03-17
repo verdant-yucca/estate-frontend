@@ -151,16 +151,16 @@
 
 
 .element__delete {
-  width: 26px;
-  height: 27px;
-  padding: 4px;
+  width: 22px;
+  height: 23px;
+  padding: 2px;
   border: none;
   position: absolute;
-  top: 5%;
+  top: 47%;
   right: 5%;
-  background-size: 100%;
   cursor: pointer;
   background: rgb(70, 35, 122, 0.8) url(../../../../images/button/deleteCards.svg) no-repeat center;
+  background-size: 60%;
   border-radius: 50%;
   opacity: 1;
   transition: scale .3s ease-in;
@@ -174,16 +174,16 @@
 
 
 .element__edit {
-  width: 26px;
-  height: 27px;
-  padding: 4px;
+  width: 22px;
+  height: 23px;
+  padding: 2px;
   border: none;
   position: absolute;
-  top: 20px;
-  right: 50px;
+  top: 47%;
+  right: 13%;
   cursor: pointer;
   background: rgb(70, 35, 122, 0.8)  url(../../../../images/button/button-edit.svg) no-repeat center;
-  background-size: 17px;
+  background-size: 60%;
   border-radius: 50%;
   opacity: 1;
   transition: scale .2s ease-in;

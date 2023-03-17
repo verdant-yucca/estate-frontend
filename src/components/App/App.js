@@ -6,7 +6,7 @@ import Header from '../Section/Header/Header';
 import Main from '../Page/Main/Main';
 import Footer from '../Section/Footer/Footer';
 import ImagePopup from '../Popup/ImagePopup/ImagePopup';
-import DeleteEstatePopup from '../Popup/PopupWithConfirmation/DeleteEstatePopup'
+import DeleteEstatePopup from '../Popup/DeleteEstatePopup/DeleteEstatePopup'
 import Estate from "../Page/Estate/Estate";
 import { CurrentUserContext } from '../../contexts/CurrentUserContext';
 import './App.css';
@@ -20,18 +20,24 @@ import Details from "../Page/Details/Details";
 import AddEstatePopup from "../Popup/AddEstatePopup/AddEstatePopup";
 import EditEstatePopup from "../Popup/EditEstatePopup/EditEstatePopup";
 import AddReviewPopup from "../Popup/AddReviewPopup/AddReviewPopup";
+import DeleteReviewPopup from "../Popup/DeleteReviewPopup/DeleteReviewPopup";
 
 function App() {
+  const [estates, setEstates] = useState([]);
   const [isAddEstatePopupOpen, setIsAddEstatePopupOpen] = useState(false);
   const [isAddReviewPopupOpen, setIsAddReviewPopupOpen] = useState(false);
   const [isEditEstatePopupOpen, setIsEditEstatePopupOpen] = useState(false);
   const [isDeleteEstatePopupOpen, setIsDeleteEstatePopupOpen] = useState(false);
   const [selectedEstateID, setSelectedEstateID] = useState(null);
+
+
+  const [reviews, setReviews] = useState([]);
+  const [isDeleteReviewPopupOpen, setIsDeleteReviewPopupOpen] = useState(false);
+  const [selectedReviewID, setSelectedReviewID] = useState(null);
+
+
   const [currentUser, setCurrentUser] = useState({});
   const [isLoading, setIsLoading] = useState(false);
-  const [estates, setEstates] = useState([]);
-  const [reviews, setReviews] = useState([]);
-
   const [loggedIn, setLoggedIn] = useState(false);
   const history = useHistory();
   const [isTooltipPopupOpen, setIsTooltipPopupOpen] = useState(false);
@@ -61,6 +67,7 @@ function App() {
     setIsEditEstatePopupOpen(false);
     setIsDeleteEstatePopupOpen(false);
     setIsAddReviewPopupOpen(false);
+    setIsDeleteReviewPopupOpen(false);
     setSelectedEstateID(null);
   };
 
@@ -196,6 +203,21 @@ function App() {
   };
 //#endregion
 
+//#region DeleteReview
+  const handleClickDeleteReview = reviewID => {
+    setSelectedReviewID(reviewID);
+    setIsDeleteReviewPopupOpen(true);
+  };
+
+  const handleSubmitReviewDelete = reviewID => {
+    console.log(reviewID)
+    api.deleteReview(reviewID)
+      .then((res) => setReviews((reviewsNew) => reviewsNew.filter(item => item._id !== reviewID)))
+      .catch(err => onError(err))
+      .finally(() => handleClosePopups());
+  };
+//#endregion
+
   return (
     <div className="page">
       <CurrentUserContext.Provider value={currentUser}>
@@ -204,7 +226,8 @@ function App() {
           <Switch>
             <Route exact path="/">
               <Main
-                onAddReview={handleClickAddReview}
+                onClickAddReview={handleClickAddReview}
+                onClickDeleteReview={handleClickDeleteReview}
                 loggedIn={loggedIn}
                 reviews={reviews}
               />
@@ -268,6 +291,12 @@ function App() {
                            onClickClosePopups={handleClosePopups}
                            estateID={selectedEstateID}
                            onSubmitDeleteEstate={handleSubmitEstateDelete}
+        />
+
+        <DeleteReviewPopup isOpenPopup={isDeleteReviewPopupOpen}
+                           onClickClosePopups={handleClosePopups}
+                           ReviewID={selectedReviewID}
+                           onSubmitDeleteReview={handleSubmitReviewDelete}
         />
 
         <ImagePopup card={selectedEstateID} onPopupClose={handleClosePopups}/>

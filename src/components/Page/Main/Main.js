@@ -7,7 +7,7 @@ import api from "../../../utils/api";
 import SectionFeatureCards from "../../Section/SectionFeatureCards/SectionFeatureCards";
 import Services from "../../Section/Services/Services";
 
-function Main({onAddReview, reviews}) {
+function Main({onClickAddReview, onClickDeleteReview, reviews, loggedIn}) {
   const [cards, setCards] = useState([]);
 
   useEffect(() => {
@@ -19,12 +19,8 @@ function Main({onAddReview, reviews}) {
   return (
     <>
       <section className="promo">
-        {/*Задний фон*/}
-        {/*<img className='promo__slider' src={imageBanner} alt='promo__slider'></img>*/}
         <div className='promo__slider'/>
         <div className='promo__shadow'></div>
-
-        {/*две колонки: слева контент, справа форма связи*/}
         <div className='promo__info'>
           <h1 className='promo__info-title'>Найдем ваш дом мечты</h1>
           <p className='promo__info-text'>Получите бесплатную консультацию ЭКСПЕРТА по недвижимости + помощь в приобретении</p>
@@ -36,7 +32,7 @@ function Main({onAddReview, reviews}) {
 
       <Services />
 
-      <SectionReviews reviews={reviews} onAddReview={onAddReview}/>
+      <SectionReviews reviews={reviews} onClickAddReview={onClickAddReview} onClickDeleteReview={onClickDeleteReview} loggedIn={loggedIn}/>
     </>
   );
 }

@@ -42,6 +42,14 @@ class Api {
       .then (this._checkResponse);
   };
 
+  openCard(estateId) {
+    return fetch(`${this._serverUrl}/estate/${estateId}`, {
+      method: 'GET',
+      headers: this._headers
+    })
+      .then (this._checkResponse);
+  };
+
   telegramMessage(subject, name, phoneNumber, message) {
     return fetch(`${this._serverUrl}/transfer/sendTlgMessage`, {
       method: 'POST',
@@ -68,9 +76,9 @@ class Api {
       .then (this._checkResponse);
   };
 
-  openCard(estateId) {
-    return fetch(`${this._serverUrl}/estate/${estateId}`, {
-      method: 'GET',
+  deleteReview(reviewId) {
+    return fetch(`${this._serverUrl}/review/${reviewId}`, {
+      method: 'DELETE',
       headers: this._headers
     })
       .then (this._checkResponse);
