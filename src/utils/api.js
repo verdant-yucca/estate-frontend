@@ -56,6 +56,18 @@ class Api {
       .then (this._checkResponse);
   };
 
+  addReview(name, text) {
+    return fetch(`${this._serverUrl}/review`, {
+      method: 'POST',
+      headers: this._headers,
+      body: JSON.stringify({
+        name: name,
+        text: text
+      })
+    })
+      .then (this._checkResponse);
+  };
+
   openCard(estateId) {
     return fetch(`${this._serverUrl}/estate/${estateId}`, {
       method: 'GET',

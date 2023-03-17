@@ -7,15 +7,10 @@ import api from "../../../utils/api";
 import SectionFeatureCards from "../../Section/SectionFeatureCards/SectionFeatureCards";
 import Services from "../../Section/Services/Services";
 
-function Main() {
-  const [reviews, setReviews] = useState([]);
+function Main({onAddReview, reviews}) {
   const [cards, setCards] = useState([]);
 
-
   useEffect(() => {
-    api.getReviews()
-      .then((reviews) => setReviews(reviews))
-      .catch(err => console.log(err));
     api.getInitialCards(0)
       .then((cards) => setCards(cards))
       .catch(err => console.log(err));
@@ -41,7 +36,7 @@ function Main() {
 
       <Services />
 
-      <SectionReviews reviews={reviews}/>
+      <SectionReviews reviews={reviews} onAddReview={onAddReview}/>
     </>
   );
 }

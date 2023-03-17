@@ -12,10 +12,9 @@ import Profile_silhouette from "../../../images/Profile-silhouette.svg";
 import { Keyboard, Scrollbar, Navigation, Pagination } from "swiper";
 import Card from "../Blocks/Card/Card";
 
-function SectionReviews({reviews}) {
-
+function SectionReviews({reviews, onAddReview}) {
   const handlerOnClick = () =>{
-    console.log("Добавление отзыва")
+    onAddReview();
   }
 
   return (

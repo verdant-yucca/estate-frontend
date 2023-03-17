@@ -19,9 +19,11 @@ import Login from "../Page/Login/Login";
 import InfoTooltip from "../Popup/InfoTooltip/InfoTooltip";
 import Details from "../Page/Details/Details";
 import AddEstatePopup from "../Popup/AddEstatePopup/AddEstatePopup";
+import AddReviewPopup from "../Popup/AddReviewPopup/AddReviewPopup";
 
 function App() {
   const [isAddPlacePopupOpen, setIsAddPlacePopupOpen] = useState(false);
+  const [isAddReviewPopupOpen, setIsAddReviewPopupOpen] = useState(false);
   const [isAddPlacePopupOpen2, setIsAddPlacePopupOpen2] = useState(false);
   const [isConfirmPopupOpen, setIsConfirmPopupOpen] = useState(false);
   const [selectedCard, setSelectedCard] = useState(null);
@@ -29,6 +31,7 @@ function App() {
   const [isLoading, setIsLoading] = useState(false);
   const [selectedCardDelete, setSelectedCardDelete] = useState(null);
   const [cards, setCards] = useState([]);
+  const [reviews, setReviews] = useState([]);
 
   const [loggedIn, setLoggedIn] = useState(false);
   const history = useHistory();
@@ -41,6 +44,9 @@ function App() {
   const onError = err => console.log(err);
 
   useEffect(() => {
+    api.getReviews()
+      .then((reviews) => setReviews(reviews))
+      .catch(err => console.log(err));
     api.getInitialCards(0)
       .then((cards) => {
         setCards(cards);
@@ -112,6 +118,7 @@ function App() {
 
 
   const handleAddPlaceClick = () => setIsAddPlacePopupOpen(true);
+  const handleAddReviewClick = () => setIsAddReviewPopupOpen(true);
   const handleAddPlaceClick2 = () => setIsAddPlacePopupOpen2(true);
   const handleCardClick = card => setSelectedCard(card);
 
@@ -138,10 +145,22 @@ function App() {
       });
   };
 
+  const handleAddReviewSubmit = (name, text) => {
+    setIsLoading(true);
+    api.addReview(name, text)
+      .then((review) => {setReviews([review, ...reviews])})
+      .catch(err => onError(err))
+      .finally(() => {
+        setIsLoading(false);
+        closeAllPopups();
+      });
+  };
+
   const closeAllPopups = () => {
     setIsAddPlacePopupOpen(false);
     setIsAddPlacePopupOpen2(false);
     setIsConfirmPopupOpen(false);
+    setIsAddReviewPopupOpen(false);
     setSelectedCard(null);
     setSelectedCardDelete(null);
   };
@@ -163,7 +182,9 @@ function App() {
           <Switch>
             <Route exact path="/">
               <Main
+                onAddReview={handleAddReviewClick}
                 loggedIn={loggedIn}
+                reviews={reviews}
               />
             </Route>
 
@@ -213,6 +234,12 @@ function App() {
                         onPopupClose={closeAllPopups}
                         onAddPlace={handleAddPlaceSubmit}
                         isLoading={isLoading}
+        />
+
+        <AddReviewPopup  isOpen={isAddReviewPopupOpen}
+                         onPopupClose={closeAllPopups}
+                         onAddReview={handleAddReviewSubmit}
+                         isLoading={isLoading}
         />
 
         <PopupWithConfirmation isOpen={isConfirmPopupOpen}
