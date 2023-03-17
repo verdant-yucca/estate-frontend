@@ -1,14 +1,14 @@
 import PopupWithForm from '../PopupWithForm/PopupWithForm';
 import './PopupWithConfirmation.css';
 
-function PopupWithConfirmation({ isOpen, onPopupClose, card, onCardDelete }) {
+function DeleteEstatePopup({ isOpen, onClickClosePopups, estateID, onSubmitDeleteEstate }) {
   const handleSubmit = e => {
     e.preventDefault();
-    onCardDelete(card);
+    onSubmitDeleteEstate(estateID);
   };
   return (
     <PopupWithForm title="Вы уверены?" name="form-confirm" buttonSave="Да"
-                   isOpen={isOpen} onPopupClose={onPopupClose} onSubmit={handleSubmit} />
+                   isOpen={isOpen} onPopupClose={onClickClosePopups} onSubmit={handleSubmit} />
   );
 }
-export default PopupWithConfirmation;
+export default DeleteEstatePopup;

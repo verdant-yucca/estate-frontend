@@ -53,7 +53,7 @@ function SectionFeatureCards({cards}) {
       >
         {cards.map(card => (
           <SwiperSlide className="future-card__slide" key={'swiper_'+card._id}>
-            <Card key={card._id} loggedIn={false} card={card} onConfirm={false} />
+            <Card key={card._id} loggedIn={false} card={card} onConfirm={false} onEdit={false} />
           </SwiperSlide>
         ))}
       </Swiper>

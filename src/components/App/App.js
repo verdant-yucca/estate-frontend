@@ -5,9 +5,8 @@ import api from '../../utils/api';
 import Header from '../Section/Header/Header';
 import Main from '../Page/Main/Main';
 import Footer from '../Section/Footer/Footer';
-import AddPlacePopup from '../Popup/AddPlacePopup/AddPlacePopup'
 import ImagePopup from '../Popup/ImagePopup/ImagePopup';
-import PopupWithConfirmation from '../Popup/PopupWithConfirmation/PopupWithConfirmation'
+import DeleteEstatePopup from '../Popup/PopupWithConfirmation/DeleteEstatePopup'
 import Estate from "../Page/Estate/Estate";
 import { CurrentUserContext } from '../../contexts/CurrentUserContext';
 import './App.css';
@@ -19,16 +18,16 @@ import Login from "../Page/Login/Login";
 import InfoTooltip from "../Popup/InfoTooltip/InfoTooltip";
 import Details from "../Page/Details/Details";
 import AddEstatePopup from "../Popup/AddEstatePopup/AddEstatePopup";
+import EditEstatePopup from "../Popup/EditEstatePopup/EditEstatePopup";
 
 function App() {
-  const [isAddPlacePopupOpen, setIsAddPlacePopupOpen] = useState(false);
-  const [isAddPlacePopupOpen2, setIsAddPlacePopupOpen2] = useState(false);
-  const [isConfirmPopupOpen, setIsConfirmPopupOpen] = useState(false);
-  const [selectedCard, setSelectedCard] = useState(null);
+  const [isAddEstatePopupOpen, setIsAddEstatePopupOpen] = useState(false);
+  const [isEditEstatePopupOpen, setIsEditEstatePopupOpen] = useState(false);
+  const [isDeleteEstatePopupOpen, setIsDeleteEstatePopupOpen] = useState(false);
+  const [selectedEstateID, setSelectedEstateID] = useState(null);
   const [currentUser, setCurrentUser] = useState({});
   const [isLoading, setIsLoading] = useState(false);
-  const [selectedCardDelete, setSelectedCardDelete] = useState(null);
-  const [cards, setCards] = useState([]);
+  const [estates, setEstates] = useState([]);
 
   const [loggedIn, setLoggedIn] = useState(false);
   const history = useHistory();
@@ -37,13 +36,12 @@ function App() {
   const [messageTooltip, setMessageTooltip] = useState('');
   const [iconTooltip, setIconTooltip] = useState('');
 
-
   const onError = err => console.log(err);
-
+  //при загрузке страницы подгружаем квартиры
   useEffect(() => {
     api.getInitialCards(0)
-      .then((cards) => {
-        setCards(cards);
+      .then((estates) => {
+        setEstates(estates);
       })
       .catch(err => {
         onError(err)
@@ -51,6 +49,13 @@ function App() {
     setInterval(checkToken(), 100);
   }, [])
 
+//#region utils
+  const handleClosePopups = () => {
+    setIsAddEstatePopupOpen(false);
+    setIsEditEstatePopupOpen(false);
+    setIsDeleteEstatePopupOpen(false);
+    setSelectedEstateID(null);
+  };
 
   function checkToken() {
     if (localStorage.getItem('token')) {
@@ -62,29 +67,31 @@ function App() {
     }
     return true
   }
+//#endregion
 
-  const handleSuccessClick = () => setIsTooltipPopupOpen(true);
+//#region АУТЕНТИФИКАЦИЯ
+  const handleClickSuccess = () => setIsTooltipPopupOpen(true);
 
-  const handleRegister = (password, email) => {
+  const handleSubmitRegister = (password, email) => {
     authApi.register(password, email)
       .then(res => {
         if(res) {
           setIconTooltip(successIcon);
           setMessageTooltip('Вы успешно зарегистрировались!');
-          handleSuccessClick();
+          handleClickSuccess();
           // history.push('/sign-in');
         }
       })
-      .then(() => setTimeout(handleLogin, 300, password, email))
+      .then(() => setTimeout(handleSubmitLogin, 300, password, email))
       .catch(err => {
         onError(err);
         setIconTooltip(failIcon);
         setMessageTooltip('Что-то пошло не так! Попробуйте еще раз.');
-        handleSuccessClick();
+        handleClickSuccess();
       });
   };
 
-  const handleLogin = (password, email) => {
+  const handleSubmitLogin = (password, email) => {
     authApi.login(password, email)
       .then(res => {
         if(res.token) {
@@ -99,7 +106,7 @@ function App() {
         onError(err);
         setIconTooltip(failIcon);
         setMessageTooltip('Что-то пошло не так! Попробуйте еще раз.');
-        handleSuccessClick();
+        handleClickSuccess();
         // history.push('/sign-in');
       });
   };
@@ -109,51 +116,64 @@ function App() {
     setLoggedIn(false);
     setEmail('');
   };
+//#endregion
 
-
-  const handleAddPlaceClick = () => setIsAddPlacePopupOpen(true);
-  const handleAddPlaceClick2 = () => setIsAddPlacePopupOpen2(true);
-  const handleCardClick = card => setSelectedCard(card);
-
-  const handleConfirmClick = card => {
-    setIsConfirmPopupOpen(true);
-    setSelectedCardDelete(card);
-  };
-
-  const handleCardDelete = estate => {
-    api.deleteCard(estate._id)
-      .then((res) => setCards((estatesNew) => estatesNew.filter(item => item._id !== estate._id)))
-      .catch(err => onError(err))
-      .finally(() => closeAllPopups());
-  };
-
-  const handleAddPlaceSubmit = (data) => {
+//#region AddEstate
+  const handleClickAddEstate = () => setIsAddEstatePopupOpen(true);
+  const handleSubmitAddEstate = (data) => {
     setIsLoading(true);
     api.addCard(data)
-      .then(({estate}) => setTimeout(()=>{setCards([estate, ...cards])}, 1500))
+      .then(({estate}) => setTimeout(()=>{setEstates([estate, ...estates])}, 1500))
       .catch(err => onError(err))
       .finally(() => {
         setIsLoading(false);
-        closeAllPopups();
+        handleClosePopups();
       });
   };
+//#endregion
 
-  const closeAllPopups = () => {
-    setIsAddPlacePopupOpen(false);
-    setIsAddPlacePopupOpen2(false);
-    setIsConfirmPopupOpen(false);
-    setSelectedCard(null);
-    setSelectedCardDelete(null);
+//#region EditEstate
+  const handleClickEditEstate = estateID => {
+    setSelectedEstateID(estateID);
+    setIsEditEstatePopupOpen(true);
+  };
+  const handleSubmitEditEstate = (data) => {
+    // setIsLoading(true);
+    // api.addCard(data)
+    //   .then(({estate}) => setTimeout(()=>{setEstates([estate, ...estates])}, 1500))
+    //   .catch(err => onError(err))
+    //   .finally(() => {
+    //     setIsLoading(false);
+    //     handleClosePopups();
+    //   });
+  };
+//#endregion
+
+//#region DeleteEstate
+  const handleClickDeleteEstate = estateID => {
+    setSelectedEstateID(estateID);
+    setIsDeleteEstatePopupOpen(true);
   };
 
-  const handleMoreEstates = () => {
-    api.getInitialCards(Math.trunc(cards.length / 20))
+  const handleSubmitEstateDelete = estateID => {
+    console.log(estateID)
+    api.deleteCard(estateID)
+      .then((res) => setEstates((estatesNew) => estatesNew.filter(item => item._id !== estateID)))
+      .catch(err => onError(err))
+      .finally(() => handleClosePopups());
+  };
+//#endregion
+
+//#region MoreEstates
+  const handleClickMoreEstates = () => {
+    api.getInitialCards(Math.trunc(estates.length / 20))
       .then((estate) => {
-        let newArr = cards.concat(estate);
-        setTimeout(()=>{setCards(newArr)}, 300)
+        let newArr = estates.concat(estate);
+        setTimeout(()=>{setEstates(newArr)}, 300)
       } )
       .catch(err => onError(err))
   }
+//#endregion
 
   return (
     <div className="page">
@@ -170,12 +190,11 @@ function App() {
             <Route path="/estate/:estateID" component={Details}/>
 
             <Route path="/estate">
-              <Estate onAddPlace={handleAddPlaceClick}
-                      onAddPlace2={handleAddPlaceClick2}
-                      onConfirm={handleConfirmClick}
-                      onCardClick={handleCardClick}
-                      cards={cards}
-                      onMore={handleMoreEstates}
+              <Estate onClickAddEstate={handleClickAddEstate}
+                      onClickDeleteEstate={handleClickDeleteEstate}
+                      onClickEditEstate={handleClickEditEstate}
+                      cards={estates}
+                      onClickMoreEstates={handleClickMoreEstates}
                       loggedIn={loggedIn}
               />
             </Route>
@@ -183,10 +202,10 @@ function App() {
 
             <ProtectedRoute path="/sign-up"
                             component={Register}
-                            handleRegister={handleRegister}
+                            handleRegister={handleSubmitRegister}
             />
             <Route path="/sign-in">
-              <Login handleLogin={handleLogin}/>
+              <Login handleLogin={handleSubmitLogin}/>
             </Route>
 
             <ProtectedRoute path="/admin"
@@ -203,27 +222,28 @@ function App() {
 
         <Footer/>
 
-        <AddPlacePopup  isOpen={isAddPlacePopupOpen}
-                        onPopupClose={closeAllPopups}
-                        onAddPlace={handleAddPlaceSubmit}
-                        isLoading={isLoading}
+        <AddEstatePopup   isOpenPopup={isAddEstatePopupOpen}
+                          onClickClosePopups={handleClosePopups}
+                          onSubmitAddEstate={handleSubmitAddEstate}
+                          isLoading={isLoading}
         />
 
-        <AddEstatePopup  isOpen={isAddPlacePopupOpen2}
-                        onPopupClose={closeAllPopups}
-                        onAddPlace={handleAddPlaceSubmit}
-                        isLoading={isLoading}
+        <EditEstatePopup  isOpen={isEditEstatePopupOpen}
+                          onClickClosePopups={handleClosePopups}
+                          estateID={selectedEstateID}
+                          onSubmitEditEstate={handleSubmitEditEstate}
+                          isLoading={isLoading}
         />
 
-        <PopupWithConfirmation isOpen={isConfirmPopupOpen}
-                               onPopupClose={closeAllPopups}
-                               card={selectedCardDelete}
-                               onCardDelete={handleCardDelete}
+        <DeleteEstatePopup isOpen={isDeleteEstatePopupOpen}
+                           onClickClosePopups={handleClosePopups}
+                           estateID={selectedEstateID}
+                           onSubmitDeleteEstate={handleSubmitEstateDelete}
         />
 
-        <ImagePopup card={selectedCard} onPopupClose={closeAllPopups}/>
+        <ImagePopup card={selectedEstateID} onPopupClose={handleClosePopups}/>
 
-        <InfoTooltip isOpen={isTooltipPopupOpen} onPopupClose={closeAllPopups}
+        <InfoTooltip isOpen={isTooltipPopupOpen} onPopupClose={handleClosePopups}
                      messageTooltip={messageTooltip} iconTooltip={iconTooltip}/>
 
       </CurrentUserContext.Provider>
