@@ -1,5 +1,6 @@
 import './Card.css';
 import eyes from '../../../../images/eyes.png';
+import edit from '../../../../images/button/button-edit.svg';
 import office from '../../../../images/tagEstate/building.png';
 import home from '../../../../images/tagEstate/building-1.png';
 import apartment from '../../../../images/tagEstate/building-2.png';
@@ -7,8 +8,9 @@ import { Route, Link } from 'react-router-dom';
 import React from "react";
 import {gap} from "../../../../utils/utils";
 
-function Card({ card, onConfirm, loggedIn }) {
-  const handleConfirmClick = () => onConfirm(card);
+function Card({ card, onClickDeleteEstate, onClickEditEstate, loggedIn }) {
+  const handleConfirmDeleteEstate = () => onClickDeleteEstate(card._id);
+  const handleConfirmEditEstate = () => onClickEditEstate(card._id);
 
   const elementTagClassName = `element__tag ${card.apartment && 'element__tag_yellow'}
                                             ${card.office && 'element__tag_blue'}
@@ -43,7 +45,8 @@ function Card({ card, onConfirm, loggedIn }) {
       <p key={"views_" + card._id} className="element_views_counter" >{card.views}</p>
     </div>
 
-    {loggedIn ? <button key={"buttonDelete_" + card._id} type="button" className={'element__delete element__delete_active'} onClick={handleConfirmClick}></button> : ''}
+    {loggedIn && <button key={"buttonDelete_" + card._id} type="button" className={'element__delete element__delete_active'} onClick={handleConfirmDeleteEstate}></button> }
+    {loggedIn && <button key={"buttonEdit_" + card._id} type="button" className={'element__edit element__delete_active'} onClick={handleConfirmEditEstate}></button> }
   </li>
   )
 }

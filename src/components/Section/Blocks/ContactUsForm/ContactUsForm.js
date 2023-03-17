@@ -20,24 +20,24 @@ function ContactUsForm() {
   return (
     <>
     {/*<section className="main" id='section-contact-us'>*/}
-    <div className="container">
+    <div className="contact-us__block__container">
       <div className="contact-us__block">
         <form action="src/components/Section/Blocks/ContactUsForm/ContactUsForm#" onSubmit={handleContactUsSubmit}>
-          <div className="topic">Связаться с нами</div>
-          <div className="input-box">
-            <input value={name} onChange={handleChangeName} type="text" required/>
-            <label>Введите имя</label>
+          <div className="contact-us__topic">Связаться с нами</div>
+          <div className="contact-us__input-box">
+            <input className="contact-us__input" value={name} onChange={handleChangeName} type="text" required/>
+            <label className="contact-us__block__label">Введите имя</label>
           </div>
-          <div className="input-box">
-            <input value={phoneNumber} onChange={handleChangePhoneNumber} type="text" required/>
-            <label>Введите номер телефона</label>
+          <div className="contact-us__input-box">
+            <input className="contact-us__input" value={phoneNumber} onChange={handleChangePhoneNumber} type="text" required/>
+            <label className="contact-us__block__label">Введите номер телефона</label>
           </div>
-          <div className="message-box">
-            <textarea value={message} onChange={handleChangeMessage}></textarea>
-            <label>Введите сообщение</label>
+          <div className="contact-us__message-box">
+            <textarea className="contact-us__textarea" value={message} onChange={handleChangeMessage}></textarea>
+            <label className="contact-us__block__label">Введите сообщение</label>
           </div>
-          <div className="input-box">
-            <input type="submit" value="Отправить сообщение"/>
+          <div className="contact-us__input-box">
+            <input className="contact-us__input" type="submit" value="Отправить сообщение"/>
           </div>
         </form>
       </div>

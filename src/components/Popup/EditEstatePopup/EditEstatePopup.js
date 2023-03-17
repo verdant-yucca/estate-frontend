@@ -1,8 +1,7 @@
-import PopupWithForm from '../PopupWithForm/PopupWithForm';
 import React, { useState, useRef } from 'react';
-import './AddEstatePopup.css';
+import './EditEstatePopup.css';
 
-function AddEstatePopup({ isOpenPopup, onClickClosePopups, onSubmitAddEstate, isLoading }) {
+function EditEstatePopup({ isOpen, onClickClosePopups, onSubmitEditEstate, estateID, isLoading }) {
   const [title, setTitle] = useState('');
   const [price, setPrice] = useState('');
   const [rooms, setRooms] = useState('');
@@ -56,7 +55,7 @@ function AddEstatePopup({ isOpenPopup, onClickClosePopups, onSubmitAddEstate, is
       i++;
       data.append('images'+i, file);
     })
-    onSubmitAddEstate(data);
+    onSubmitEditEstate(data);
 
     //после сабмита надо обнулить поля
     fileRef.current = null;
@@ -76,7 +75,7 @@ function AddEstatePopup({ isOpenPopup, onClickClosePopups, onSubmitAddEstate, is
   };
 
   return (
-    <div className={`add-estate-popup ${isOpenPopup ? 'add-estate-popup_active': ''}`}>
+    <div className={`add-estate-popup ${isOpen ? 'add-estate-popup_active': ''}`}>
     {/*<div className={`add-estate-popup popup_active`}>*/}
       <div className="add-estate-popup__container">
         <h2 className="add-estate-popup__title">Объект недвижимости</h2>
@@ -171,4 +170,4 @@ function AddEstatePopup({ isOpenPopup, onClickClosePopups, onSubmitAddEstate, is
   );
 }
 
-export default AddEstatePopup;
+export default EditEstatePopup;

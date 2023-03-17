@@ -9,7 +9,7 @@ function EstateDescription({estate,scroll}) {
 
   return (
     <section className="estate-description">
-      <div className={`estate-description__block ${scroll > 120 ? "estate-description__block_fixed" : ""}`}>
+      <div className={`estate-description__block ${scroll > 115 ? "estate-description__block_fixed" : ""}`}>
         <div className={`estate-description__flex`}>
           <button className={`estate-description__back-button`} onClick={handleOnClick}></button>
           <div className="estate-description__favorite">
@@ -22,7 +22,7 @@ function EstateDescription({estate,scroll}) {
           </div>
         </div>
       </div>
-      <div className={scroll > 120  && "estate-description__dummy"}></div>
+      <div className={scroll > 115  && "estate-description__dummy"}></div>
 
     </section>
   )

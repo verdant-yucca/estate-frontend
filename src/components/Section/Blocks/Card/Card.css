@@ -151,23 +151,47 @@
 
 
 .element__delete {
-  width: 18px;
-  height: 19px;
-  padding: 0;
+  width: 26px;
+  height: 27px;
+  padding: 4px;
   border: none;
   position: absolute;
-  top: 20px;
-  right: 20px;
+  top: 5%;
+  right: 5%;
   background-size: 100%;
   cursor: pointer;
-  background: url(../../../../images/button/deleteCards.svg) no-repeat center;
+  background: rgb(70, 35, 122, 0.8) url(../../../../images/button/deleteCards.svg) no-repeat center;
+  border-radius: 50%;
   opacity: 1;
-  transition: opacity .3s ease-in;
+  transition: scale .3s ease-in;
   visibility: hidden;
 }
 
 .element__delete:hover {
-  opacity: 0.6;
+  /*opacity: 0.6;  */
+  scale: 1.15;
+}
+
+
+.element__edit {
+  width: 26px;
+  height: 27px;
+  padding: 4px;
+  border: none;
+  position: absolute;
+  top: 20px;
+  right: 50px;
+  cursor: pointer;
+  background: rgb(70, 35, 122, 0.8)  url(../../../../images/button/button-edit.svg) no-repeat center;
+  background-size: 17px;
+  border-radius: 50%;
+  opacity: 1;
+  transition: scale .2s ease-in;
+  visibility: hidden;
+}
+
+.element__edit:hover {
+  scale: 1.15;
 }
 
 .element__delete_active {

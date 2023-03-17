@@ -5,7 +5,7 @@
 }
 
 .estate-description__dummy {
-  height: 285px;
+  height: 280px;
 }
 .estate-description__block{
   /*position: fixed;*/
@@ -14,7 +14,7 @@
 }
 
 .estate-description__block_fixed {
-  padding: 20px 7.5% 0 ;
+  padding: 10px 7.5% 0 ;
   position: fixed;
   top: 0;
   left: 0;
