@@ -166,3 +166,7 @@
 
 .add-estate-popup__block-info{
 }
+
+.invisible {
+  display: none;
+}

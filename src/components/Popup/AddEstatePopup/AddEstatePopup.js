@@ -3,6 +3,30 @@ import React, { useState, useRef } from 'react';
 import './AddEstatePopup.css';
 
 function AddEstatePopup({ isOpenPopup, onClickClosePopups, onSubmitAddEstate, isLoading }) {
+
+  const [isHome, setIsHome] = useState(false);
+  const [isOffice, setIsOffice] = useState(false);
+  const [isApartment, setIsApartment] = useState(false);
+  const handleChangeIsHome = e => {
+    setIsHome(e.target.value);
+    setIsOffice(false);
+    setIsApartment(false);
+  };
+  const handleChangeIsOffice = e => {
+    setIsHome(false);
+    setIsOffice(e.target.value);
+    setIsApartment(false);
+  };
+  const handleChangeIsApartment = e => {
+    setIsHome(false);
+    setIsOffice(false);
+    setIsApartment(e.target.value);
+  };
+
+
+
+
+
   const [title, setTitle] = useState('');
   const [price, setPrice] = useState('');
   const [rooms, setRooms] = useState('');
@@ -80,6 +104,14 @@ function AddEstatePopup({ isOpenPopup, onClickClosePopups, onSubmitAddEstate, is
     {/*<div className={`add-estate-popup popup_active`}>*/}
       <div className="add-estate-popup__container">
         <h2 className="add-estate-popup__title">Объект недвижимости</h2>
+        <div className="add-estate-popup__toggle-type-estate">
+          <label>Квартира</label>
+          <input type="radio" name="toggle-type-estate" onChange={handleChangeIsApartment}/>
+          <label>Дом</label>
+          <input type="radio" name="toggle-type-estate" onChange={handleChangeIsHome}/>
+          <label>Коммерческая</label>
+          <input type="radio" name="toggle-type-estate" onChange={handleChangeIsOffice}/>
+        </div>
         <form name={`form-add-cards`} className="add-estate-popup__edit" noValidate>
 
           <div className="add-estate-popup__block-properties">
@@ -100,7 +132,8 @@ function AddEstatePopup({ isOpenPopup, onClickClosePopups, onSubmitAddEstate, is
                 <label className="add-estate-popup__label">Адрес</label>
               </div>
             </div>
-            <div className="add-estate-popup__block-properties_column width30">
+            {/**/}
+            <div className={`add-estate-popup__block-properties_column ${isApartment ? '': 'invisible' } width30`}>
               <div className="add-estate-popup__block-input">
                 <input type="number" value={rooms} onChange={handleChangeRooms} name="rooms"
                        className="add-estate-popup__input width100" required />
@@ -127,7 +160,7 @@ function AddEstatePopup({ isOpenPopup, onClickClosePopups, onSubmitAddEstate, is
                 <label className="add-estate-popup__label">Этаж</label>
               </div>
             </div>
-            <div className="add-estate-popup__block-properties_column width30">
+            <div className={`add-estate-popup__block-properties_column ${isApartment ? '': 'invisible' } width30`}>
               <div className="add-estate-popup__block-input">
                 <input type="text" value={height} onChange={handleChangeHeight} name="height"
                        className="add-estate-popup__input width100" required/>
@@ -149,6 +182,107 @@ function AddEstatePopup({ isOpenPopup, onClickClosePopups, onSubmitAddEstate, is
                 <label className="add-estate-popup__label">Ремонт</label>
               </div>
             </div>
+            {/**/}
+            <div className={`add-estate-popup__block-properties_column ${isOffice ? '': 'invisible' } width30`}>
+              {/*<div className="add-estate-popup__block-input">*/}
+              {/*  <input type="number" value={rooms} onChange={handleChangeRooms} name="rooms"*/}
+              {/*         className="add-estate-popup__input width100" required />*/}
+              {/*  <label className="add-estate-popup__label">Количество комнат</label>*/}
+              {/*</div>*/}
+              <div className="add-estate-popup__block-input">
+                <input type="text" value={square} onChange={handleChangeSquare} name="square"
+                       className="add-estate-popup__input width100" required minLength="2" maxLength="30" />
+                <label className="add-estate-popup__label">Площадь</label>
+              </div>
+              {/*<div className="add-estate-popup__block-input">*/}
+              {/*  <input type="text" value={kitchen_square} onChange={handleChangeKitchen_square} name="kitchen_square"*/}
+              {/*         className="add-estate-popup__input width100" required minLength="2" maxLength="30" />*/}
+              {/*  <label className="add-estate-popup__label">Площадь кухни</label>*/}
+              {/*</div>*/}
+              {/*<div className="add-estate-popup__block-input">*/}
+              {/*  <input type="text" value={living_space} onChange={handleChangeLiving_space} name="living_space"*/}
+              {/*         className="add-estate-popup__input width100" required minLength="2" maxLength="30" />*/}
+              {/*  <label className="add-estate-popup__label">Жилая площадь</label>*/}
+              {/*</div>*/}
+              <div className="add-estate-popup__block-input">
+                <input type="number" value={floor} onChange={handleChangeFloor} name="floor"
+                       className="add-estate-popup__input width100" required/>
+                <label className="add-estate-popup__label">Этаж</label>
+              </div>
+            </div>
+            <div className={`add-estate-popup__block-properties_column ${isOffice ? '': 'invisible' } width30`}>
+              <div className="add-estate-popup__block-input">
+                <input type="text" value={height} onChange={handleChangeHeight} name="height"
+                       className="add-estate-popup__input width100" required/>
+                <label className="add-estate-popup__label">Высота потолка</label>
+              </div>
+              {/*<div className="add-estate-popup__block-input">*/}
+              {/*  <input type="text" value={bathroom} onChange={handleChangeBathroom} name="bathroom"*/}
+              {/*         className="add-estate-popup__input width100" required minLength="2" maxLength="30" />*/}
+              {/*  <label className="add-estate-popup__label">Санузел</label>*/}
+              {/*</div>*/}
+              <div className="add-estate-popup__block-input">
+                <input type="text" value={furniture} onChange={handleChangeFurniture} name="furniture"
+                       className="add-estate-popup__input width100" required minLength="2" maxLength="30" />
+                <label className="add-estate-popup__label">Мебель</label>
+              </div>
+              <div className="add-estate-popup__block-input">
+                <input type="text" value={repair} onChange={handleChangeRepair} name="repair"
+                       className="add-estate-popup__input width100" required minLength="2" maxLength="30" />
+                <label className="add-estate-popup__label">Ремонт</label>
+              </div>
+            </div>
+            {/**/}
+            <div className={`add-estate-popup__block-properties_column ${isHome ? '': 'invisible' } width30`}>
+              <div className="add-estate-popup__block-input">
+                <input type="number" value={rooms} onChange={handleChangeRooms} name="rooms"
+                       className="add-estate-popup__input width100" required />
+                <label className="add-estate-popup__label">Количество комнат</label>
+              </div>
+              <div className="add-estate-popup__block-input">
+                <input type="text" value={square} onChange={handleChangeSquare} name="square"
+                       className="add-estate-popup__input width100" required minLength="2" maxLength="30" />
+                <label className="add-estate-popup__label">Площадь участка</label>
+              </div>
+              <div className="add-estate-popup__block-input">
+                <input type="text" value={kitchen_square} onChange={handleChangeKitchen_square} name="kitchen_square"
+                       className="add-estate-popup__input width100" required minLength="2" maxLength="30" />
+                <label className="add-estate-popup__label">Площадь дома</label>
+              </div>
+              {/*<div className="add-estate-popup__block-input">*/}
+              {/*  <input type="text" value={living_space} onChange={handleChangeLiving_space} name="living_space"*/}
+              {/*         className="add-estate-popup__input width100" required minLength="2" maxLength="30" />*/}
+              {/*  <label className="add-estate-popup__label">Жилая площадь</label>*/}
+              {/*</div>*/}
+              <div className="add-estate-popup__block-input">
+                <input type="number" value={floor} onChange={handleChangeFloor} name="floor"
+                       className="add-estate-popup__input width100" required/>
+                <label className="add-estate-popup__label">Этажей</label>
+              </div>
+            </div>
+            <div className={`add-estate-popup__block-properties_column ${isHome ? '': 'invisible' } width30`}>
+              <div className="add-estate-popup__block-input">
+                <input type="text" value={height} onChange={handleChangeHeight} name="height"
+                       className="add-estate-popup__input width100" required/>
+                <label className="add-estate-popup__label">Пристройки</label>
+              </div>
+              <div className="add-estate-popup__block-input">
+                <input type="text" value={bathroom} onChange={handleChangeBathroom} name="bathroom"
+                       className="add-estate-popup__input width100" required minLength="2" maxLength="30" />
+                <label className="add-estate-popup__label">Санузел</label>
+              </div>
+              <div className="add-estate-popup__block-input">
+                <input type="text" value={furniture} onChange={handleChangeFurniture} name="furniture"
+                       className="add-estate-popup__input width100" required minLength="2" maxLength="30" />
+                <label className="add-estate-popup__label">Мебель</label>
+              </div>
+              <div className="add-estate-popup__block-input">
+                <input type="text" value={repair} onChange={handleChangeRepair} name="repair"
+                       className="add-estate-popup__input width100" required minLength="2" maxLength="30" />
+                <label className="add-estate-popup__label">Ремонт</label>
+              </div>
+            </div>
+            {/**/}
           </div>
 
           <div className="add-estate-popup__block-photo">
