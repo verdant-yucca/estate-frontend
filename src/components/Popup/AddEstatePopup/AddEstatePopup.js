@@ -1,31 +1,13 @@
 import PopupWithForm from '../PopupWithForm/PopupWithForm';
 import React, { useState, useRef } from 'react';
 import './AddEstatePopup.css';
+import { Button, Form, Input, Radio } from 'antd';
 
 function AddEstatePopup({ isOpenPopup, onClickClosePopups, onSubmitAddEstate, isLoading }) {
 
-  const [isHome, setIsHome] = useState(false);
-  const [isOffice, setIsOffice] = useState(false);
-  const [isApartment, setIsApartment] = useState(false);
-  const handleChangeIsHome = e => {
-    setIsHome(e.target.value);
-    setIsOffice(false);
-    setIsApartment(false);
-  };
-  const handleChangeIsOffice = e => {
-    setIsHome(false);
-    setIsOffice(e.target.value);
-    setIsApartment(false);
-  };
-  const handleChangeIsApartment = e => {
-    setIsHome(false);
-    setIsOffice(false);
-    setIsApartment(e.target.value);
-  };
-
-
-
-
+  const [form] = Form.useForm();
+  const [typeEstate, setTypeEstate] = useState('apartment');
+  const onFormLayoutChange = ({ estate }) => setTypeEstate(estate);
 
   const [title, setTitle] = useState('');
   const [price, setPrice] = useState('');
@@ -55,6 +37,8 @@ function AddEstatePopup({ isOpenPopup, onClickClosePopups, onSubmitAddEstate, is
   const handleChangeInfo = e => setInfo(e.target.value);
   const handleChangeImages = e => {fileRef.current = e.target.files};
   const handleChangeAddress = e => setAddress(e.target.value);
+
+
 
   const handleSubmit = e => {
     e.preventDefault();
@@ -104,14 +88,34 @@ function AddEstatePopup({ isOpenPopup, onClickClosePopups, onSubmitAddEstate, is
     {/*<div className={`add-estate-popup popup_active`}>*/}
       <div className="add-estate-popup__container">
         <h2 className="add-estate-popup__title">Объект недвижимости</h2>
-        <div className="add-estate-popup__toggle-type-estate">
-          <label>Квартира</label>
-          <input type="radio" name="toggle-type-estate" onChange={handleChangeIsApartment}/>
-          <label>Дом</label>
-          <input type="radio" name="toggle-type-estate" onChange={handleChangeIsHome}/>
-          <label>Коммерческая</label>
-          <input type="radio" name="toggle-type-estate" onChange={handleChangeIsOffice}/>
-        </div>
+        {/*<div className="add-estate-popup__toggle-type-estate">*/}
+        {/*  <label>Квартира</label>*/}
+        {/*  <input type="radio" name="toggle-type-estate" onChange={handleChangeIsApartment}/>*/}
+        {/*  <label>Дом</label>*/}
+        {/*  <input type="radio" name="toggle-type-estate" onChange={handleChangeIsHome}/>*/}
+        {/*  <label>Коммерческая</label>*/}
+        {/*  <input type="radio" name="toggle-type-estate" onChange={handleChangeIsOffice}/>*/}
+        {/*</div>*/}
+
+        <Form
+          estate={typeEstate}
+          form={form}
+          initialValues={{
+            estate: typeEstate,
+          }}
+          onValuesChange={onFormLayoutChange}
+          style={{
+            maxWidth: 600,
+          }}
+        >
+          <Form.Item label="Form Layout" name="estate">
+            <Radio.Group value={typeEstate}>
+              <Radio.Button value={'apartment'} >Квартира</Radio.Button>
+              <Radio.Button value={'home'}>Дом</Radio.Button>
+              <Radio.Button value={'office'}>Коммерческая</Radio.Button>
+            </Radio.Group>
+          </Form.Item>
+        </Form>
         <form name={`form-add-cards`} className="add-estate-popup__edit" noValidate>
 
           <div className="add-estate-popup__block-properties">
@@ -133,7 +137,7 @@ function AddEstatePopup({ isOpenPopup, onClickClosePopups, onSubmitAddEstate, is
               </div>
             </div>
             {/**/}
-            <div className={`add-estate-popup__block-properties_column ${isApartment ? '': 'invisible' } width30`}>
+            <div className={`add-estate-popup__block-properties_column ${typeEstate==="apartment"  ? '': 'invisible' } width30`}>
               <div className="add-estate-popup__block-input">
                 <input type="number" value={rooms} onChange={handleChangeRooms} name="rooms"
                        className="add-estate-popup__input width100" required />
@@ -160,7 +164,7 @@ function AddEstatePopup({ isOpenPopup, onClickClosePopups, onSubmitAddEstate, is
                 <label className="add-estate-popup__label">Этаж</label>
               </div>
             </div>
-            <div className={`add-estate-popup__block-properties_column ${isApartment ? '': 'invisible' } width30`}>
+            <div className={`add-estate-popup__block-properties_column ${typeEstate==="apartment" ? '': 'invisible' } width30`}>
               <div className="add-estate-popup__block-input">
                 <input type="text" value={height} onChange={handleChangeHeight} name="height"
                        className="add-estate-popup__input width100" required/>
@@ -183,7 +187,7 @@ function AddEstatePopup({ isOpenPopup, onClickClosePopups, onSubmitAddEstate, is
               </div>
             </div>
             {/**/}
-            <div className={`add-estate-popup__block-properties_column ${isOffice ? '': 'invisible' } width30`}>
+            <div className={`add-estate-popup__block-properties_column ${typeEstate==="office" ? '': 'invisible' } width30`}>
               {/*<div className="add-estate-popup__block-input">*/}
               {/*  <input type="number" value={rooms} onChange={handleChangeRooms} name="rooms"*/}
               {/*         className="add-estate-popup__input width100" required />*/}
@@ -210,7 +214,7 @@ function AddEstatePopup({ isOpenPopup, onClickClosePopups, onSubmitAddEstate, is
                 <label className="add-estate-popup__label">Этаж</label>
               </div>
             </div>
-            <div className={`add-estate-popup__block-properties_column ${isOffice ? '': 'invisible' } width30`}>
+            <div className={`add-estate-popup__block-properties_column ${typeEstate==="office"  ? '': 'invisible' } width30`}>
               <div className="add-estate-popup__block-input">
                 <input type="text" value={height} onChange={handleChangeHeight} name="height"
                        className="add-estate-popup__input width100" required/>
@@ -233,7 +237,7 @@ function AddEstatePopup({ isOpenPopup, onClickClosePopups, onSubmitAddEstate, is
               </div>
             </div>
             {/**/}
-            <div className={`add-estate-popup__block-properties_column ${isHome ? '': 'invisible' } width30`}>
+            <div className={`add-estate-popup__block-properties_column ${typeEstate==="home"  ? '': 'invisible' } width30`}>
               <div className="add-estate-popup__block-input">
                 <input type="number" value={rooms} onChange={handleChangeRooms} name="rooms"
                        className="add-estate-popup__input width100" required />
@@ -260,7 +264,7 @@ function AddEstatePopup({ isOpenPopup, onClickClosePopups, onSubmitAddEstate, is
                 <label className="add-estate-popup__label">Этажей</label>
               </div>
             </div>
-            <div className={`add-estate-popup__block-properties_column ${isHome ? '': 'invisible' } width30`}>
+            <div className={`add-estate-popup__block-properties_column ${typeEstate==="home" ? '': 'invisible' } width30`}>
               <div className="add-estate-popup__block-input">
                 <input type="text" value={height} onChange={handleChangeHeight} name="height"
                        className="add-estate-popup__input width100" required/>

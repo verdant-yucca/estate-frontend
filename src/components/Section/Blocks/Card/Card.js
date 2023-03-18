@@ -12,11 +12,11 @@ function Card({ card, onClickDeleteEstate, onClickEditEstate, loggedIn }) {
   const handleConfirmDeleteEstate = () => onClickDeleteEstate(card._id);
   const handleConfirmEditEstate = () => onClickEditEstate(card._id);
 
-  const elementTagClassName = `element__tag ${card.apartment && 'element__tag_yellow'}
-                                            ${card.office && 'element__tag_blue'}
-                                            ${card.home && 'element__tag_green'}`;
-  const elementTagImage = card.apartment ? (apartment) : (card.office ? office : home);
-  const elementTagText = card.apartment ? ('Квартира') : (card.office ? 'Коммерческая' : 'Дом');
+  const elementTagClassName = `element__tag ${card.typeEstate==="apartment" && 'element__tag_yellow'}
+                                            ${card.typeEstate==="office" && 'element__tag_blue'}
+                                            ${card.typeEstate==="home" && 'element__tag_green'}`;
+  const elementTagImage = card.typeEstate==="apartment" ? (apartment) : (card.typeEstate==="office" ? office : home);
+  const elementTagText = card.typeEstate==="apartment" ? ('Квартира') : (card.typeEstate==="office" ? 'Коммерческая' : 'Дом');
   const toDetails = {
     pathname: 'estate/' + card._id,
     estateId: card._id
