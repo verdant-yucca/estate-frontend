@@ -301,7 +301,7 @@ function App() {
                            onSubmitDeleteReview={handleSubmitReviewDelete}
         />
 
-        <ImagePopup card={selectedEstateID} onPopupClose={handleClosePopups}/>
+        {/*<ImagePopup card={selectedEstateID} onPopupClose={handleClosePopups}/>*/}
 
         <InfoTooltip isOpenPopup={isTooltipPopupOpen} onPopupClose={handleClosePopups}
                      messageTooltip={messageTooltip} iconTooltip={iconTooltip}/>
