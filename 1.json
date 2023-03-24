@@ -1,0 +1,48 @@
+{
+  "title": "",
+  "price": 0,
+  "address": "",
+  "info": "",
+  "createDate": "01.01.22",
+  "images": [],
+  "views": [],
+  "coords": [],
+  "target":false ,
+  "typeEstate": "",
+  "square": 0,
+
+  "apartment":{
+    "floor": 0,
+    "status": "",
+    "rooms": 0,
+    "kitchen_square": 0,
+    "living_space": 0,
+    "total_floors": 0,
+    "height": 0,
+    "bathroom": "",
+    "repair": "",
+    "furniture": ""
+  },
+  "office": {
+    "floor": 0,
+    "power_grid_capacity": 0,
+    "purpose": "",
+    "room_layout": "",
+    "heating": "",
+    "separate_entrance": false
+  },
+  "home": {
+    "rooms": 0,
+    "plot_area": 0,
+    "house_floors": 0,
+    "year_built": 0,
+    "land_category": "",
+    "wall_material": "",
+    "heating": "",
+    "toilet": "",
+    "repair": "",
+    "water_supply": "",
+    "electricity": false
+  }
+}
+
