@@ -1,4 +1,3 @@
-import PopupWithForm from '../PopupWithForm/PopupWithForm';
 import React, { useState, useRef } from 'react';
 import './AddEstatePopup.css';
 import { Button, Form, Input, Radio } from 'antd';

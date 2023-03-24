@@ -1,6 +1,5 @@
 import './Card.css';
 import eyes from '../../../../images/eyes.png';
-import edit from '../../../../images/button/button-edit.svg';
 import office from '../../../../images/tagEstate/building.png';
 import home from '../../../../images/tagEstate/building-1.png';
 import apartment from '../../../../images/tagEstate/building-2.png';

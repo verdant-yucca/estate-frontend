@@ -1,5 +1,5 @@
 import {useState, useEffect} from 'react';
-import {Route, Switch, Redirect, useHistory} from 'react-router-dom';
+import {Route, Routes, redirect, useNavigate} from 'react-router-dom';
 import ProtectedRoute from "../ProtectedRoute/ProtectedRoute";
 import api from '../../utils/api';
 import Header from '../Section/Header/Header';
@@ -39,7 +39,7 @@ function App() {
   const [currentUser, setCurrentUser] = useState({});
   const [isLoading, setIsLoading] = useState(false);
   const [loggedIn, setLoggedIn] = useState(false);
-  const history = useHistory();
+  const navigate = useNavigate();
   const [isTooltipPopupOpen, setIsTooltipPopupOpen] = useState(false);
   const [email, setEmail] = useState('');
   const [messageTooltip, setMessageTooltip] = useState('');
@@ -93,7 +93,6 @@ function App() {
           setIconTooltip(successIcon);
           setMessageTooltip('Вы успешно зарегистрировались!');
           handleClickSuccess();
-          // history.push('/sign-in');
         }
       })
       .then(() => setTimeout(handleSubmitLogin, 300, password, email))
@@ -111,7 +110,7 @@ function App() {
         if(res.token) {
           localStorage.setItem('token', res.token);
           window.location.reload();
-          history.goBack()
+          navigate(-1); //goBack()
           setEmail(email);
           setLoggedIn(true);
         }
@@ -121,7 +120,6 @@ function App() {
         setIconTooltip(failIcon);
         setMessageTooltip('Что-то пошло не так! Попробуйте еще раз.');
         handleClickSuccess();
-        // history.push('/sign-in');
       });
   };
 
@@ -223,7 +221,7 @@ function App() {
       <CurrentUserContext.Provider value={currentUser}>
         <Header loggedIn={loggedIn} email={email} signOut={signOut} />
         <main key={"main"} className="content">
-          <Switch>
+          <Routes>
             <Route exact path="/">
               <Main
                 onClickAddReview={handleClickAddReview}
@@ -260,10 +258,10 @@ function App() {
             />
 
             <Route path="*">
-              <Redirect to="/" />
+              {redirect("/")}
             </Route>
 
-          </Switch>
+          </Routes>
         </main>
 
         <Footer/>

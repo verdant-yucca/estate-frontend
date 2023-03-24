@@ -1,5 +1,5 @@
 import logo from '../../../images/logo/logo_white.png';
-import { Route, Link } from 'react-router-dom';
+import { Link } from 'react-router-dom';
 import './Header.css';
 import HamburgerMenu from "../HamburgerMenu/HamburgerMenu";
 

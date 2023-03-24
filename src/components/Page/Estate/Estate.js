@@ -1,20 +1,10 @@
 import Card from '../../Section/Blocks/Card/Card';
 import "./Estate.css"
-import {useEffect, useState} from 'react';
+import { useState} from 'react';
 // import YMaps from '../VMaps/YMaps'
 
 function Estate({cards, onClickAddEstate, onClickDeleteEstate, onClickEditEstate, onClickMoreEstates, loggedIn }) {
-  // const [cards, setCards] = useState([]);
-  //
-  // useEffect(() => {
-  //   api.getInitialCards()
-  //     .then((cards) => {
-  //       setCards(cards);
-  //     })
-  //     .catch(err => {
-  //       onError(err)
-  //     });
-  // }, [])
+
 //TODO: перенести сюда запрос карточек сервера
   const [numPage, setNumPage] = useState(1);
   const handleClickButtonMoreEstate = () => {

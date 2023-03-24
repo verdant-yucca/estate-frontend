@@ -1,4 +1,4 @@
-import React, { useRef, useState } from "react";
+import React from "react";
 import { Swiper, SwiperSlide } from "swiper/react";
 import "swiper/css";
 import "swiper/css/scrollbar";
@@ -9,10 +9,6 @@ import { Keyboard, Navigation, Pagination } from "swiper";
 import Card from "../Blocks/Card/Card";
 
 function SectionFeatureCards({cards}) {
-
-  const handlerOnClick = () =>{
-    console.log("Добавление отзыва")
-  }
 
   return (
     <section className="swiper__section">

@@ -1,11 +1,11 @@
 import './EstateDescription.css';
 import {gap} from "../../../utils/utils";
-import {useHistory} from "react-router-dom";
+import {useNavigate} from "react-router-dom";
 
 // function EstateDescription({title,price,images}) {
 function EstateDescription({estate,scroll}) {
-  const history = useHistory();
-  const handleOnClick = () => history.goBack();
+  const navigate = useNavigate();
+  const handleOnClick = () => navigate(-1); //goBack;
 
   return (
     <section className="estate-description">

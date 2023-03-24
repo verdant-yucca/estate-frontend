@@ -1,7 +1,6 @@
 import './PhotoSlider.css';
 import {Keyboard, Navigation, Pagination, Scrollbar} from "swiper";
 import {Swiper, SwiperSlide} from "swiper/react";
-import Profile_silhouette from "../../../../images/Profile-silhouette.svg";
 import React from "react";
 
 
@@ -37,7 +36,7 @@ function PhotoSlider({images})
       >
         {images?.map(image => (
           <SwiperSlide key={'swiperimage_'+image}>
-            <img className={'photo-slider__image'} key={'img_'+image} src={'https://api.verdant-yucca.ru/images/estate/' + image} alt="image"/>
+            <img className={'photo-slider__image'} key={'img_'+image} src={'https://api.verdant-yucca.ru/images/estate/' + image} alt={'img_'+image}/>
           </SwiperSlide>
         ))}
       </Swiper>

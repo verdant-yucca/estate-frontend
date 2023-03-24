@@ -1,4 +1,4 @@
-import React, {useEffect, useRef} from 'react';
+import React, {useEffect} from 'react';
 import './ImagePopup.css';
 import api from "../../../utils/api";
 
