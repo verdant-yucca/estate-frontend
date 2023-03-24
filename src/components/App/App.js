@@ -1,5 +1,5 @@
 import {useState, useEffect} from 'react';
-import {Route, Routes, redirect, useNavigate} from 'react-router-dom';
+import {Route, Switch, Redirect, useHistory} from 'react-router-dom';
 import ProtectedRoute from "../ProtectedRoute/ProtectedRoute";
 import api from '../../utils/api';
 import Header from '../Section/Header/Header';
@@ -39,7 +39,7 @@ function App() {
   const [currentUser, setCurrentUser] = useState({});
   const [isLoading, setIsLoading] = useState(false);
   const [loggedIn, setLoggedIn] = useState(false);
-  const navigate = useNavigate();
+  const history = useHistory();
   const [isTooltipPopupOpen, setIsTooltipPopupOpen] = useState(false);
   const [email, setEmail] = useState('');
   const [messageTooltip, setMessageTooltip] = useState('');
@@ -110,7 +110,7 @@ function App() {
         if(res.token) {
           localStorage.setItem('token', res.token);
           window.location.reload();
-          navigate(-1); //goBack()
+          history.goBack()
           setEmail(email);
           setLoggedIn(true);
         }
@@ -221,7 +221,7 @@ function App() {
       <CurrentUserContext.Provider value={currentUser}>
         <Header loggedIn={loggedIn} email={email} signOut={signOut} />
         <main key={"main"} className="content">
-          <Routes>
+          <Switch>
             <Route exact path="/">
               <Main
                 onClickAddReview={handleClickAddReview}
@@ -258,10 +258,10 @@ function App() {
             />
 
             <Route path="*">
-              {redirect("/")}
+              <Redirect to="/" />
             </Route>
 
-          </Routes>
+          </Switch>
         </main>
 
         <Footer/>
