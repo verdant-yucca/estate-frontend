@@ -21,6 +21,8 @@ import AddEstatePopup from "../Popup/AddEstatePopup/AddEstatePopup";
 import EditEstatePopup from "../Popup/EditEstatePopup/EditEstatePopup";
 import AddReviewPopup from "../Popup/AddReviewPopup/AddReviewPopup";
 import DeleteReviewPopup from "../Popup/DeleteReviewPopup/DeleteReviewPopup";
+import About from "../Page/About/About";
+import Services from "../Page/Services/Services";
 
 function App() {
   const [estates, setEstates] = useState([]);
@@ -232,6 +234,8 @@ function App() {
             </Route>
 
             <Route path="/estate/:estateID" component={Details}/>
+            <Route path="/services" component={Services}/>
+            <Route path="/about" component={About}/>
 
             <Route path="/estate">
               <Estate onClickAddEstate={handleClickAddEstate}

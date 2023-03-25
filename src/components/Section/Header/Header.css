@@ -59,6 +59,7 @@
   white-space: nowrap;
   overflow: hidden;
   display: flex;
+  align-self: end;
 }
 
 .header__nav {
@@ -66,11 +67,6 @@
   justify-content: space-between;
 }
 
-@media screen and (max-width: 700px) {
-  .header__nav {
-    margin: 27px 30px 0 0;
-  }
-}
 .header__button {
   margin: 0 0 0 24px;
   padding: 0;
@@ -86,14 +82,19 @@
   color: rgba(255,255,255,0.6);
 }
 
+.active-link {
+  text-decoration: underline;
+}
+
 @media screen and (max-width: 700px) {
   .header__button {
     margin: 0;
     padding: 0;
     font-size: 14px;
   }
-
-
+  .header__nav {
+    margin: 27px 30px 0 0;
+  }
   .header__info {
     visibility: hidden;
   }
