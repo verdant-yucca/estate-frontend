@@ -5,33 +5,32 @@ import { Button, Form, Input, Radio } from 'antd';
 function AddEstatePopup({ isOpenPopup, onClickClosePopups, onSubmitAddEstate, isLoading }) {
 
   const [form] = Form.useForm();
-  const onFormLayoutChange = ({ estate }) => setTypeEstate(estate);
 
   //общее
   const [title, setTitle] = useState('');
-  const [price, setPrice] = useState(null);
+  const [price, setPrice] = useState('');
   const [address, setAddress] = useState('');
   const [info, setInfo] = useState('');
   const [typeEstate, setTypeEstate] = useState('apartment');
   const [target, setTarget] = useState(false);
-  const [square, setSquare] = useState(null);
-  const fileRef = useRef(null);
+  const [square, setSquare] = useState('');
+  const fileRef = useRef('');
 
   //apartment
-  const [floor, setFloor] = useState(null);
+  const [floor, setFloor] = useState('');
   const [status, setStatus] = useState('');
-  const [rooms, setRooms] = useState(null);
-  const [kitchen_square, setKitchenSquare] = useState(null);
-  const [living_space, setLivingSpace] = useState(null);
-  const [total_floors, setTotalFloors] = useState(null);
-  const [height, setHeight] = useState(null);
+  const [rooms, setRooms] = useState('');
+  const [kitchen_square, setKitchenSquare] = useState('');
+  const [living_space, setLivingSpace] = useState('');
+  const [total_floors, setTotalFloors] = useState('');
+  const [height, setHeight] = useState('');
   const [bathroom, setBathroom] = useState('');
   const [repair, setRepair] = useState('');
   const [furniture, setFurniture] = useState('');
 
   //office
   // const [floor, setFloor] = useState(0);
-  const [power_grid_capacity, setPowerGridCapacity] = useState(null);
+  const [power_grid_capacity, setPowerGridCapacity] = useState('');
   const [purpose, setPurpose] = useState('');
   const [room_layout, setRoomLayout] = useState('');
   const [heating, setHeating] = useState('');
@@ -39,8 +38,8 @@ function AddEstatePopup({ isOpenPopup, onClickClosePopups, onSubmitAddEstate, is
 
   //home
   // const [rooms, setRooms] = useState(0);
-  const [plot_area, setPlotArea] = useState(null);
-  const [house_floors, setHouseFloors] = useState(null);
+  const [plot_area, setPlotArea] = useState('');
+  const [house_floors, setHouseFloors] = useState('');
   const [year_built, setYearBuilt] = useState(0);
   const [land_category, setLandCategory] = useState('');
   const [wall_material, setWallMaterial] = useState('');
@@ -53,8 +52,9 @@ function AddEstatePopup({ isOpenPopup, onClickClosePopups, onSubmitAddEstate, is
   const handleChangeTitle = e => setTitle(e.target.value);
   const handleChangePrice = e => setPrice(e.target.value);
   const handleChangeAddress = e => setAddress(e.target.value);
+  const handleChangeTarget = e => setTarget(!target);
   const handleChangeInfo = e => setInfo(e.target.value);
-  const handleChangeTypeEstate = e => setTypeEstate(e.target.value);
+  const handleChangeTypeEstate = ({ estate }) => setTypeEstate(estate);
   const handleChangeSquare = e => setSquare(e.target.value);
   const handleChangeImages = e => {fileRef.current = e.target.files};
 
@@ -99,6 +99,7 @@ function AddEstatePopup({ isOpenPopup, onClickClosePopups, onSubmitAddEstate, is
     if (title) data.append('title', title);
     if (price) data.append('price', price);
     if (address) data.append('address', address);
+    if (target) data.append('target', target);
     if (square) data.append('square', square);
     if (info) data.append('info', info);
     if (typeEstate) data.append('typeEstate', typeEstate);
@@ -165,6 +166,7 @@ function AddEstatePopup({ isOpenPopup, onClickClosePopups, onSubmitAddEstate, is
     setRepair('');
     setInfo('');
     setAddress('');
+    setTarget(false);
   };
 
   return (
@@ -187,7 +189,7 @@ function AddEstatePopup({ isOpenPopup, onClickClosePopups, onSubmitAddEstate, is
           initialValues={{
             estate: typeEstate,
           }}
-          onValuesChange={onFormLayoutChange}
+          onValuesChange={handleChangeTypeEstate}
           style={{
             maxWidth: 600,
           }}
@@ -223,6 +225,16 @@ function AddEstatePopup({ isOpenPopup, onClickClosePopups, onSubmitAddEstate, is
                 <input type="number" value={square} onChange={handleChangeSquare} name="square"
                        className="add-estate-popup__input width100" required />
                 <label className="add-estate-popup__label">Общая площадь</label>
+              </div>
+              {/*<div className="add-estate-popup__block-input">*/}
+              {/*  <input type="number" value={square} onChange={handleChangeSquare} name="square"*/}
+              {/*         className="add-estate-popup__input width100" required />*/}
+              {/*  <label className="add-estate-popup__label"></label>*/}
+              {/*</div>*/}
+              <div className="add-estate-popup__block-input">
+                <input type="checkbox" checked={target} onChange={handleChangeTarget}
+                       className="add-estate-popup__checkbox" name="target"/>
+                  <label className="add-estate-popup__label" htmlFor="target">Показывать на главной</label>
               </div>
               <div className="add-estate-popup__dummy"></div>
             </div>

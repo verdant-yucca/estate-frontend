@@ -11,7 +11,7 @@ function Main({onClickAddReview, onClickDeleteReview, reviews, loggedIn}) {
   const [cards, setCards] = useState([]);
 
   useEffect(() => {
-    api.getInitialCards(0)
+    api.getInitialCards(0, true)
       .then((cards) => setCards(cards))
       .catch(err => console.log(err));
   }, [])

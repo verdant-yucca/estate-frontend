@@ -136,6 +136,10 @@
   transition: all 0.4s ease;
 }
 
+.add-estate-popup__checkbox {
+  position: relative;
+}
+
 .add-estate-popup__dummy {
   height: 100px;
 }
