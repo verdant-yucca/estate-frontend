@@ -15,8 +15,8 @@ function ApartmentAbout({estate}) {
             {estate && estate.apartment && estate.apartment.rooms &&
               <li className="estate-about__parameter">Количество комнат: <span className="estate-about__text">{estate.apartment.rooms}</span></li>
             }
-            {estate && estate.apartment && estate.apartment.square &&
-            <li className="estate-about__parameter">Общая площадь: <span className="estate-about__text">{estate.apartment.square} м²</span></li>
+            {estate && estate.apartment && estate.square &&
+            <li className="estate-about__parameter">Общая площадь: <span className="estate-about__text">{estate.square} м²</span></li>
             }
             {estate && estate.apartment && estate.apartment.kitchen_square &&
               <li className="estate-about__parameter">Площадь кухни: <span className="estate-about__text">{estate.apartment.kitchen_square} м²</span></li>

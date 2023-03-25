@@ -4,6 +4,8 @@ import EstateDescription from "../../Section/EstateDescription/EstateDescription
 import api from "../../../utils/api";
 import ApartmentAbout from "../../Section/EstateAbout/ApartmentAbout";
 import EstateInfo from "../../Section/EstateInfo/EstateInfo";
+import OfficeAbout from "../../Section/EstateAbout/OfficeAbout";
+import HomeAbout from "../../Section/EstateAbout/HomeAbout";
 
 function Details(props) {
   const [estate, setEstate] = useState({});
@@ -24,11 +26,11 @@ function Details(props) {
       {/*<EstateDescription title={estate.title} price={estate.price} images={estate.images} />*/}
       {/*TODO: множественные запросы при прокрутке страниц*/}
       <EstateDescription estate={estate} scroll={scroll}/>
+      {estate.typeEstate==="apartment" && <ApartmentAbout estate={estate}/>}
+      {estate.typeEstate==="office" && <OfficeAbout estate={estate}/>}
+      {estate.typeEstate==="home" && <HomeAbout estate={estate}/>}
 
-      <ApartmentAbout estate={estate}/>
       <EstateInfo estate={estate}/>
-
-
     </>
   );
 }

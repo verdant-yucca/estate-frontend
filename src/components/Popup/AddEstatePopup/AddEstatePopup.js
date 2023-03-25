@@ -76,7 +76,7 @@ function AddEstatePopup({ isOpenPopup, onClickClosePopups, onSubmitAddEstate, is
   const handleChangePurpose = e => setPurpose(e.target.value);
   const handleChangeRoomLayout = e => setRoomLayout(e.target.value);
   const handleChangeHeating = e => setHeating(e.target.value);
-  const handleChangeSeparateEntrance = e => setSeparateEntrance(e.target.value);
+  const handleChangeSeparateEntrance = e => setSeparateEntrance(!separate_entrance);
 
   // Дом
   // const handleChangeRooms = e => setRooms(e.target.value);
@@ -88,7 +88,7 @@ function AddEstatePopup({ isOpenPopup, onClickClosePopups, onSubmitAddEstate, is
   // const handleChangeHeating = e => setHeating(e.target.value);
   const handleChangeToilet = e => setToilet(e.target.value);
   const handleChangeWaterSupply = e => setWaterSupply(e.target.value);
-  const handleChangeElectricity = e => setElectricity(e.target.value);
+  const handleChangeElectricity = e => setElectricity(!electricity);
 
 
 
@@ -99,7 +99,7 @@ function AddEstatePopup({ isOpenPopup, onClickClosePopups, onSubmitAddEstate, is
     if (title) data.append('title', title);
     if (price) data.append('price', price);
     if (address) data.append('address', address);
-    if (target) data.append('target', target);
+    data.append('target', target);
     if (square) data.append('square', square);
     if (info) data.append('info', info);
     if (typeEstate) data.append('typeEstate', typeEstate);
@@ -125,7 +125,7 @@ function AddEstatePopup({ isOpenPopup, onClickClosePopups, onSubmitAddEstate, is
       if (purpose) data.append('purpose', purpose);
       if (room_layout) data.append('room_layout', room_layout);
       if (heating) data.append('heating', heating);
-      if (separate_entrance) data.append('separate_entrance', separate_entrance);
+      data.append('separate_entrance', separate_entrance);
     }
 
     if (typeEstate==="home") {
@@ -139,7 +139,7 @@ function AddEstatePopup({ isOpenPopup, onClickClosePopups, onSubmitAddEstate, is
       if (heating) data.append('heating', heating);
       if (toilet) data.append('toilet', toilet);
       if (water_supply) data.append('water_supply', water_supply);
-      if (electricity) data.append('electricity', electricity);
+      data.append('electricity', electricity);
     }
 
     let fileList = fileRef.current;
@@ -323,7 +323,7 @@ function AddEstatePopup({ isOpenPopup, onClickClosePopups, onSubmitAddEstate, is
                 <label className="add-estate-popup__label">Отопление</label>
               </div>
               <div className="add-estate-popup__block-input">
-                <input type="checkbox" value={separate_entrance} onChange={handleChangeSeparateEntrance} name="separate_entrance"
+                <input type="checkbox" checked={separate_entrance} onChange={handleChangeSeparateEntrance} name="separate_entrance"
                        className="add-estate-popup__input width100" required/>
                 <label className="add-estate-popup__label">Отдельный вход</label>
               </div>
@@ -378,7 +378,7 @@ function AddEstatePopup({ isOpenPopup, onClickClosePopups, onSubmitAddEstate, is
                 <label className="add-estate-popup__label">Водоснабжение</label>
               </div>
               <div className="add-estate-popup__block-input">
-                <input type="checkbox" value={electricity} onChange={handleChangeElectricity} name="electricity"
+                <input type="checkbox" checked={electricity} onChange={handleChangeElectricity} name="electricity"
                        className="add-estate-popup__input width100" required minLength="2" maxLength="30" />
                 <label className="add-estate-popup__label">Электричество</label>
               </div>
