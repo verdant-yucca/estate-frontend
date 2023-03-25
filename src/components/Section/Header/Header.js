@@ -1,5 +1,5 @@
 import logo from '../../../images/logo/logo_white.png';
-import { Link } from 'react-router-dom';
+import { Link, NavLink } from 'react-router-dom';
 import './Header.css';
 import HamburgerMenu from "../HamburgerMenu/HamburgerMenu";
 
@@ -18,9 +18,10 @@ function Header({loggedIn, signOut}) {
           {loggedIn ? <p className="header__admin-info" onClick={signOut} >ㅤㅤExit</p> : ''}
         </div>
         <div className={'header__nav'} >
-          <Link className={'header__button'} to="/estate">Недвижимость</Link>
-          <Link className={`header__button`} to="/uslugi">Услуги</Link>
-          <Link className={`header__button`} to="/AtCompany">О компании</Link>
+          <NavLink activeClassName="active-link" className={'header__button'} exact to="/">Главная</NavLink>
+          <NavLink activeClassName="active-link" className={'header__button'} to="/estate">Недвижимость</NavLink>
+          <NavLink activeClassName="active-link" className={`header__button`} to="/services">Услуги</NavLink>
+          <NavLink activeClassName="active-link" className={`header__button`} to="/about">О компании</NavLink>
         </div>
       </div>
       <HamburgerMenu loggedIn={loggedIn} signOut={signOut}/>
