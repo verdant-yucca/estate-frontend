@@ -1,4 +1,28 @@
 .contact-info{
+  width: 90%;
+  color: #46237a;
+}
+
+.contact-info__column{
+  width: 50%;
+}
+
+.contact-info__block{
   display: flex;
   flex-direction: row;
+  justify-content: center;
+}
+
+.contact-info__title{
+  margin: 20px 40px;
+  text-align: center;
+  font-size: 40px;
+}
+
+.contact-info__image{
+  font-size: 25px;
+}
+
+.contact-info__phone{
+  font-size: 25px;
 }
