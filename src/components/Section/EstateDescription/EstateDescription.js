@@ -22,7 +22,7 @@ function EstateDescription({estate,scroll}) {
           </div>
         </div>
       </div>
-      <div className={scroll > 115  && "estate-description__dummy"}></div>
+      <div className={scroll > 115  ? "estate-description__dummy" : ""}></div>
 
     </section>
   )

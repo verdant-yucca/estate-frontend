@@ -10,10 +10,11 @@ import Profile_silhouette from "../../../images/Profile-silhouette.svg";
 
 // import required modules
 import { Keyboard, Scrollbar, Navigation, Pagination } from "swiper";
+import Review from "../Blocks/Review/Review";
 
 function SectionReviews({reviews, onClickAddReview, onClickDeleteReview, loggedIn}) {
   const handlerClickAddReview = () => onClickAddReview();
-  const handleClickDeleteReview = () => onClickDeleteReview();
+  // const handleClickDeleteReview = (event) => console.log(event);
 
   return (
     <section className="swiper__section">
@@ -55,14 +56,7 @@ function SectionReviews({reviews, onClickAddReview, onClickDeleteReview, loggedI
       >
         {reviews.map(review => (
           <SwiperSlide key={'swiper_'+review._id}>
-            <div key={'item_'+review._id} className="slider__item">
-              {loggedIn && <button key={"buttonDelete_" + review._id} type="button" className={'slider__delete element__delete_active'} onClick={handleClickDeleteReview}></button> }
-              <img key={'img_'+review._id} className="slider_item_img" src={Profile_silhouette} alt=""/>
-              <div key={'content_'+review._id} className="slider__item_content">
-                <h2 key={'name_'+review._id} className="slider__item_name">{review.name}</h2>
-                <p key={'text_'+review._id} className="slider__item_text">{review.text}</p>
-              </div>
-            </div>
+            <Review loggedIn={loggedIn} review={review} onClickDeleteReview={onClickDeleteReview}/>
           </SwiperSlide>
         ))}
       </Swiper>

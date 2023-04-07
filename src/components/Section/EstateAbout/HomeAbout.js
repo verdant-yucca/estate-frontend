@@ -2,7 +2,6 @@ import './EstateAbout.css';
 import PhotoSlider from "../Blocks/PhotoSlider/PhotoSlider";
 
 function HomeAbout({estate}) {
-  console.log(estate.home.electricity)
   return (
     <section className="estate-about">
       <div className="estate-about__column">
@@ -10,7 +9,7 @@ function HomeAbout({estate}) {
       </div>
 
       <div className="estate-about__column">
-        <h2 className="estate-about__title">О квартире</h2>
+        <h2 className="estate-about__title">О доме</h2>
         <div className="estate-about__parameters">
           <ul className="estate-about__list">
             {estate && estate.home && estate.home.rooms &&

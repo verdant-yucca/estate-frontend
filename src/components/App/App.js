@@ -205,6 +205,7 @@ function App() {
 
 //#region DeleteReview
   const handleClickDeleteReview = reviewID => {
+    console.log(reviewID)
     setSelectedReviewID(reviewID);
     setIsDeleteReviewPopupOpen(true);
   };

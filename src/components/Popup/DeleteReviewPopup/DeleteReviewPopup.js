@@ -1,10 +1,10 @@
 import PopupWithForm from '../PopupWithForm/PopupWithForm';
 import './DeleteReviewPopup.css';
 
-function DeleteReviewPopup({ isOpenPopup, onClickClosePopups, reviewID, onSubmitDeleteReview }) {
+function DeleteReviewPopup({ isOpenPopup, onClickClosePopups, ReviewID, onSubmitDeleteReview }) {
   const handleSubmit = e => {
     e.preventDefault();
-    onSubmitDeleteReview(reviewID);
+    onSubmitDeleteReview(ReviewID);
   };
   return (
     <PopupWithForm title="Вы уверены?" name="form-confirm" buttonSave="Да"

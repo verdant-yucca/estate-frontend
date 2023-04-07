@@ -112,3 +112,13 @@
   /*opacity: 0.6;  */
   scale: 1.15;
 }
+
+.slider__item:hover + .swiper__button{
+
+  visibility: visible;
+}
+
+.slider__item:hover ~ .swiper__button{
+  visibility: visible;
+}
+
