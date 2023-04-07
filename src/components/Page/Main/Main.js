@@ -25,7 +25,10 @@ function Main({onClickAddReview, onClickDeleteReview, reviews, loggedIn}) {
           <h1 className='promo__info-title'>Найдем ваш дом мечты</h1>
           <p className='promo__info-text'>Получите бесплатную консультацию ЭКСПЕРТА по недвижимости + помощь в приобретении</p>
         </div>
-        <ContactUsForm />
+        <div className='promo__contact-us'>
+          <ContactUsForm />
+        </div>
+
       </section>
 
       <SectionFeatureCards cards={cards}/>
