@@ -5,6 +5,13 @@
 
 .contact-info__column{
   width: 50%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.contact-info__column:last-child{
+  align-items: start;
 }
 
 .contact-info__block{
@@ -14,15 +21,45 @@
 }
 
 .contact-info__title{
-  margin: 20px 40px;
+  margin: 80px 40px;
   text-align: center;
   font-size: 40px;
 }
 
-.contact-info__image{
+.contact-info__subtitle{
   font-size: 25px;
+  margin: 0 0 10px;
+}
+
+.contact-info__social-image{
+  font-size: 25px;
+  padding: 10px;
+  border: 1px solid #46237a;
+  border-radius: 5px;
+  margin-right: 5px;
+  transition: all ease-in 200ms;
+}
+
+.contact-info__social-image:hover {
+  scale: 1.1;
+  color: #4e2093;
+  border: 1px solid #4e2093;
+
+}
+.contact-info__address{
+  margin: 3px 0 10px;
+  font-size: 18px;
+  color: #404040;
 }
 
 .contact-info__phone{
+  letter-spacing: 2px;
+  font-weight: 600;
+  margin: 10px 0;
   font-size: 25px;
+}
+
+.margin-bottom{
+  margin-bottom: 60px;
+
 }
