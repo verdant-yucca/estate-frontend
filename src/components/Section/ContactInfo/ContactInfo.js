@@ -19,7 +19,7 @@ function ContactInfo() {
           <ContactUsForm/>
         </div>
 
-        <div  className={"contact-info__column"}>
+        <div  className={"contact-info__column contact-info__column_align-start"}>
           <h3 className={"contact-info__subtitle"}>Контактная информация</h3>
           <p className={"contact-info__address margin-bottom"}>В данном разделе вы можете ознакомиться с контактной информацией</p>
 

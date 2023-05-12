@@ -1,37 +1,47 @@
-.contact-info{
+.sell-estate{
   width: 90%;
   color: #46237a;
 }
 
-.contact-info__column{
+.sell-estate__column{
   width: 50%;
   display: flex;
   flex-direction: column;
   align-items: center;
 }
 
-.contact-info__column_align-start{
+.sell-estate__column_align-start{
   align-items: start;
 }
 
-.contact-info__block{
+.sell-estate__block{
   display: flex;
   flex-direction: row;
   justify-content: center;
 }
 
-.contact-info__title{
+.sell-estate__title{
   margin: 80px 40px;
   text-align: center;
   font-size: 40px;
 }
 
-.contact-info__subtitle{
+.sell-estate__subtitle{
   font-size: 25px;
   margin: 0 0 10px;
 }
 
-.contact-info__social-image{
+.sell-estate__list{
+  margin: 0;
+}
+
+.sell-estate__list-item{
+  margin: 2px 0 2px;
+  font-size: 18px;
+  color: #404040;
+}
+
+.sell-estate__social-image{
   font-size: 25px;
   padding: 10px;
   border: 1px solid #46237a;
@@ -40,19 +50,20 @@
   transition: all ease-in 200ms;
 }
 
-.contact-info__social-image:hover {
+.sell-estate__social-image:hover {
   scale: 1.1;
   color: #4e2093;
   border: 1px solid #4e2093;
 
 }
-.contact-info__address{
+.sell-estate__address{
   margin: 3px 0 10px;
   font-size: 18px;
   color: #404040;
+  text-align: justify ;
 }
 
-.contact-info__phone{
+.sell-estate__phone{
   letter-spacing: 2px;
   font-weight: 600;
   margin: 10px 0;
@@ -61,5 +72,4 @@
 
 .margin-bottom{
   margin-bottom: 60px;
-
 }

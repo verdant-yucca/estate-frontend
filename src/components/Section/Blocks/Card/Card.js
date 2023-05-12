@@ -6,6 +6,7 @@ import apartment from '../../../../images/tagEstate/building-2.png';
 import { Route, Link } from 'react-router-dom';
 import React from "react";
 import {gap} from "../../../../utils/utils";
+import {serverUrl} from "../../../../utils/constants";
 
 function Card({ card, onClickDeleteEstate, onClickEditEstate, loggedIn }) {
   const handleConfirmDeleteEstate = () => onClickDeleteEstate(card._id);
@@ -23,7 +24,7 @@ function Card({ card, onClickDeleteEstate, onClickEditEstate, loggedIn }) {
 
   return(
     <li key={card._id+1} className="element">
-    <img className="element__image" src={'https://api.verdant-yucca.ru/images/estate/' + card.images[0]} alt={card.title} />
+    <img className="element__image" src={serverUrl+'/images/estate/' + card.images[0]} alt={card.title} />
 
     <div key={"tag_" + card._id}  className={elementTagClassName}>
       <img key={"imgteg_" + card._id} className="element_image-tag" src={elementTagImage} alt="tag"/>
